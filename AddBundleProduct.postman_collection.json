@@ -1,0 +1,2105 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AddBundleProduct",
+		"_postman_id": "73cedacf-0c5e-83a2-34cd-8f99164d2515",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TokenAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "TokenAPI_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//Conversion String to JSON",
+									"var respBody=JSON.parse(responseBody);",
+									"",
+									"//accessing the token value from response",
+									"var access_token=respBody.token;",
+									"console.log(access_token);",
+									"",
+									"",
+									"postman.setEnvironmentVariable('accessToken',access_token);",
+									"",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"postman.setEnvironmentVariable('client_id','RA13013');",
+									"postman.setEnvironmentVariable('client_pwd','MTMwMTMzMQ==');"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/token",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{     \"loginID\": \"{{client_id}}\",     \"password\": \"{{client_pwd}}\" }"
+						},
+						"description": "TokenAPI_001"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RegistrationAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvikLifeP1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989701\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 5,\"offerCoverId\" : 11,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 3,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeP2_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989503\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 5,\"offerCoverId\" : 12,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 3,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeP3_TC_003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989505\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 5,\"offerCoverId\" : 13,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 1,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeP4_TC_004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01812347114\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 5,\"offerCoverId\" : 14,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 3,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikHealthP1_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989510\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 6,\"offerCoverId\" : 18,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 2,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 2,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"JacobNomBenef\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobbenefOne\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneftwo\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikHealthP2_TC_006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989503\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 6,\"offerCoverId\" : 20,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 3,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"JacobNom\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleP1_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 69,\"customerGender\" : \"F\",\"customerMsisdn\" : \"01828989582\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 7,\"offerCoverId\" : 24,\"healthTipsSmsFrequency\" : 6,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 3,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 2,\"nomineeDetails\" : [ {\"name\" : \"JacobNominee\",\"age\" : 0,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiary\",\"age\" : 0,\"msisdn\" : \"01898745633\",\"relationship\" : \"Mother\",\"gender\" : \"F\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleP2_TC_006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989502\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 7,\"offerCoverId\" : 25,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 2,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 2,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"JacobNominee\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiary\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleP3_TC_007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaNew\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989503\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 7,\"offerCoverId\" : 26,\"healthTipsSmsFrequency\" : 5,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 2,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 2,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"JacobNominee\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiaryOne\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiarytwo\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleP4_TC_008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/register-customer",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"AnnaBundle\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"01828989506\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 7,\"offerCoverId\" : 27,\"healthTipsSmsFrequency\" : 1,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 2,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 5,\"nomineeDetails\" : [ {\"name\" : \"JacobNominee\",\"age\" : 70,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiaryOne\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiarytwo\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"JacobBeneficiarythree\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SearchAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvikLifeSearch_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"",
+									"//Conversion of String to JSON",
+									"var respBody=JSON.parse(responseBody);",
+									"",
+									"pm.test(\"Customer details retriewed for msisdn entered for Search \", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.customer.customerDetails.customerMsisdn).to.eql(\"01812347111\");",
+									"  });",
+									"  ",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/search/01828989501",
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EditAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilivkCustomerDetailsEdit_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//{\"editCustomer\":{\"customerDetails\":{ \"customerName\":\"AnnaEdittedRobi\", \"customerAge\":56, \"customerGender\":\"F\", \"customerMsisdn\":\"01812347111\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":null}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{ \"customerName\":\"AnnaEdittedRobi\",\"customerMsisdn\":\"01812347111\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":null}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerAge\":56, \"customerGender\":\"F\", \"customerMsisdn\":\"01812347111\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":null}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerGender\":\"F\", \"customerMsisdn\":\"01812347111\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":null}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerAge\":56,\"customerMsisdn\":\"01812347111\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":null}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{ \"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\",\"documentDetails\": [{  \"documentTypeId\": 1,  \"documentValue\": \"Ders2hun\"},{  \"documentTypeId\": 2,  \"documentValue\": \"Pmjwehu\"},{  \"documentTypeId\": 3,  \"documentValue\": \"Pmjweh\"}]},\"currentSubscriptions\":null}}",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/edit-customer-subscriptions",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"editCustomer\":{\"customerDetails\":{ \"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\",\"documentDetails\": [{  \"documentTypeId\": 1,  \"documentValue\": \"Ders2hun\"},{  \"documentTypeId\": 2,  \"documentValue\": \"Pmjwehu\"},{  \"documentTypeId\": 3,  \"documentValue\": \"Pmjweh\"}]},\"currentSubscriptions\":null}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilivkSubscriptionDetailsEdit_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"healthTipsSmsFrequency\" :4,\"nomineeDetails\" :null}]}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"healthTipsSmsLang\" : \"E\",\"nomineeDetails\" :null}]}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"paymentChannelId\" : 6,\"nomineeDetails\" :null}]}}",
+									"",
+									"//{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"nomineeDetails\" :null}]}}"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/edit-customer-subscriptions",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01812347105\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"nomineeDetails\" :null}]}}\n\n\n\n\n\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilivkNomineeDetailsEdit_TC_003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/edit-customer-subscriptions",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"editCustomer\":{\"customerDetails\":{\"customerMsisdn\":\"01828989506\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\"},\"currentSubscriptions\":[ {\"offerId\" : 7,\"offerCoverId\" : 27,\"nomineeDetails\" :[ {\"name\" : \"Jacobeditednew\",\"age\" : 45,\"msisdn\" : \"01898745111\",\"relationship\" : \"Father\",\"gender\" : \"F\"},{\"name\" : \"Jacobeditednew\",\"age\" : 63,\"msisdn\" : \"01898745767\",\"relationship\" : \"Mother\",\"gender\" : \"F\"},{\"name\" : \"Jacobeditednew\",\"age\" : 63,\"msisdn\" : \"01898745779\",\"relationship\" : \"Spouse\",\"gender\" : \"F\"},{\"name\" : \"Jacobedited\",\"age\" : 56,\"msisdn\" : \"01898745679\",\"relationship\" : \"Brother\",\"gender\" : \"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilivkAllDetailsEdit_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/edit-customer-subscriptions",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"editCustomer\":{\"customerDetails\":{\"customerName\":\"AnnaEdittedNew\", \"customerAge\":34, \"customerGender\":\"F\", \"customerMsisdn\":\"01828989501\",\"modifiedBy\":13009,\"modifiedDate\":\"2020-02-28 14:53:01\",\"documentDetails\": [{  \"documentTypeId\": 1,  \"documentValue\": \"Ders2hunew\"},{  \"documentTypeId\": 2,  \"documentValue\": \"Pmjwehunew\"},{  \"documentTypeId\": 3,  \"documentValue\": \"Pmjwehunew\"}]},\"currentSubscriptions\":[{\"offerId\":7,\"offerCoverId\":27,\"healthTipsSmsFrequency\":3,\"healthTipsSmsLang\":\"B\",\"paymentChannelId\" : 1, \"nomineeDetails\":[{\"name\":\"JacobNewnomedited\",\"age\":70,\"msisdn\":\"01898701234\",\"relationship\":\"Mother\",\"gender\":\"F\"},{\"name\":\"JacobNewnefoneedited\",\"age\":71,\"msisdn\":\"01898701235\",\"relationship\":\"Spouse\",\"gender\":\"M\"},{\"name\":\"JacobNewbeneftwoedited\",\"age\":71,\"msisdn\":\"01898701235\",\"relationship\":\"Spouse\",\"gender\":\"M\"},{\"name\":\"JacobNewbeneftwoedited\",\"age\":71,\"msisdn\":\"01898701235\",\"relationship\":\"Spouse\",\"gender\":\"M\"}]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentDeactivationAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvikLifePayDeregP1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347625\",   \"offerId\" : 5,   \"offerCoverId\" : 11,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifePayDeregP2_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 12,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifePayDeregP3_TC_003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 13,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifePayDeregP4_TC_004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 14,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundlePayDeregP4_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989506\",   \"offerId\" : 7,   \"offerCoverId\" : 27,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubscriptionDeactivationAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvikLifeSubDeregP1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989601\",   \"offerId\" : 5,   \"offerCoverId\" : 13,   \"deactivationMode\" : 2,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeSubDeregP2_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 12,   \"deactivationMode\" : 2,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeSubDeregP3_TC_003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 13,   \"deactivationMode\" : 2,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikLifeSubDeregP4_TC_004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 14,   \"deactivationMode\" : 2,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleSubDeregP4_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/deactivate",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989501\",   \"offerId\" : 7,   \"offerCoverId\" : 25,   \"deactivationMode\" : 2,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-02-28 14:53:01\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentReactivationAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvilLifePayReacP1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-payment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 11,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvilLifePayReacP1_TC_002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-payment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 12,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvilLifePayReacP1_TC_003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-payment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 13,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvilLifePayReacP1_TC_004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-payment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347111\",   \"offerId\" : 5,   \"offerCoverId\" : 14,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvilBundlePayReacP1_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"",
+									"tests[\"Check for API Status code: 200\"]=responseCode.code===200;",
+									"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+									"tests[\"Check for response status message: Success\"]=responseBody.has(\"Success\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-payment",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989506\",   \"offerId\" : 7,   \"offerCoverId\" : 27,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubscriptionReactivationAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "MilvikLifeSubReacP1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}"
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"reactivateCustomer\" : {\"customerMsisdn\" : \"01812347111\",   \"customerSubscriptions\": [{    \"offerId\": 5,    \"offerCoverId\": 11,    \"healthTipsSmsFrequency\": 3,    \"healthTipsSmsLang\": \"B\",\"paymentConfigurationId\": 5,    \t\"registeredChannelId\": 7,    \"paymentChannelId\": 4, \"createdBy\" : 13009,\"createdDate\" : \"2020-04-02 14:53:01\" ,\"nomineeDetails\": [{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" }]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleSubReacP1_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"reactivateCustomer\" : {\"customerMsisdn\" : \"01828989503\",   \"customerSubscriptions\": [{    \"offerId\": 5,    \"offerCoverId\": 11,    \"healthTipsSmsFrequency\": 4,    \"healthTipsSmsLang\": \"B\",\"paymentConfigurationId\": 5,    \t\"registeredChannelId\": 5,    \"paymentChannelId\": 5, \"createdBy\" : 13009,\"createdDate\" : \"2020-04-02 14:53:01\" ,\"nomineeDetails\": [{     \"name\": \"JacobreactNom\",     \"age\": 61,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" },{\"name\": \"JacobreactBenefOne\",     \"age\": 68,     \"msisdn\": \"01898745632\",     \"relationship\": \"Father\",     \"gender\": \"F\" },{\"name\": \"JacobreactBeneftwo\",     \"age\": 68,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" },{\"name\": \"JacobreactBenefthree\",     \"age\": 68,     \"msisdn\": \"01898745632\",     \"relationship\": \"Spouse\",     \"gender\": \"F\" }]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleSubReacP2_TC_006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"reactivateCustomer\" : {\"customerMsisdn\" : \"01812347625\",   \"customerSubscriptions\": [{    \"offerId\": 7,    \"offerCoverId\": 24,    \"healthTipsSmsFrequency\": 3,    \"healthTipsSmsLang\": \"B\",\"paymentConfigurationId\": 5,    \t\"registeredChannelId\": 7,    \"paymentChannelId\": 4, \"createdBy\" : 13009,\"createdDate\" : \"2020-04-02 14:53:01\" ,\"nomineeDetails\": [{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" },{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" }]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleSubReacP3_TC_007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"reactivateCustomer\" : {\"customerMsisdn\" : \"01812347625\",   \"customerSubscriptions\": [{    \"offerId\": 7,    \"offerCoverId\": 24,    \"healthTipsSmsFrequency\": 3,    \"healthTipsSmsLang\": \"B\",\"paymentConfigurationId\": 5,    \t\"registeredChannelId\": 7,    \"paymentChannelId\": 4, \"createdBy\" : 13009,\"createdDate\" : \"2020-04-02 14:53:01\" ,\"nomineeDetails\": [{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" },{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" }]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "MilvikBundleSubReacP4_TC_008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"//pm.test(\"test description\", function(response.to.have.body(\"Expected_String\")){});",
+									"",
+									"//Chai Assertions",
+									"",
+									"//API Status code",
+									"pm.test(\"Status code is 200\", function () {",
+									"pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//response status message",
+									"pm.test(\"Check for response status message\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									"//response status code",
+									"pm.test(\"Check for response status code\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/reactivate-subscriptions",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \"reactivateCustomer\" : {\"customerMsisdn\" : \"01812347625\",   \"customerSubscriptions\": [{    \"offerId\": 7,    \"offerCoverId\": 24,    \"healthTipsSmsFrequency\": 3,    \"healthTipsSmsLang\": \"B\",\"paymentConfigurationId\": 5,    \t\"registeredChannelId\": 7,    \"paymentChannelId\": 4, \"createdBy\" : 13009,\"createdDate\" : \"2020-04-02 14:53:01\" ,\"nomineeDetails\": [{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" },{     \"name\": \"Jacobfernadis\",     \"age\": 63,     \"msisdn\": \"01898745632\",     \"relationship\": \"Mother\",     \"gender\": \"F\" }]}]}}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UpdateCoverHistoryAPI",
+			"description": "",
+			"item": [
+				{
+					"name": "UpdateCoverLifeL1_TC_001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Check API Status code: 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response status code :00\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"pm.test(\"Check response status message :Success\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/update-cover",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989502\",   \"offerId\" : 5,   \"offerCoverId\" : 13,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-03-01\",   \"coverEndDate\" : \"2020-03-31\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCoverBundleL1_TC_005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Check API Status code: 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response status code :00\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"pm.test(\"Check response status message :Success\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/update-cover",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01828989501\",   \"offerId\" : 7,   \"offerCoverId\" : 28,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"783.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-04-01\",   \"coverEndDate\" : \"2020-04-30\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCoverBundleL2_TC_006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Check API Status code: 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response status code :00\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"pm.test(\"Check response status message :Success\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/update-cover",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347103\",   \"offerId\" : 7,   \"offerCoverId\" : 25,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-04-01\",   \"coverEndDate\" : \"2020-04-30\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCoverBundleL3_TC_007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Check API Status code: 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response status code :00\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"pm.test(\"Check response status message :Success\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/update-cover",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347103\",   \"offerId\" : 7,   \"offerCoverId\" : 26,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-04-01\",   \"coverEndDate\" : \"2020-04-30\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCoverBundleL4_TC_008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Check API Status code: 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Check response status code :00\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"00\");",
+									"});",
+									"",
+									"pm.test(\"Check response status message :Success\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Success\");",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"url": "http://{{url}}/mip-sync/v1/update-cover",
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-AUTH-TOKEN",
+								"value": "{{accessToken}}",
+								"description": ""
+							},
+							{
+								"key": "Content-type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \"customerMsisdn\" : \"01812347103\",   \"offerId\" : 7,   \"offerCoverId\" : 27,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-04-01\",   \"coverEndDate\" : \"2020-04-30\" }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

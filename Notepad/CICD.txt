@@ -1,0 +1,470 @@
+* DEVOPS: Software Development approach as same as traditional waterfall /Agile Methodology
+* "Dark Launching technique"
+* Continous Development :  "Planning" and "Coding"  :: Version control system : GIT /GIT HUB
+  "Centralised Code Repository"
+  
+* Continous testing : checks whether the current build has impacted the previously commited and tested build
+* Continous Integration CI (jenkins) :
+
+In this CI, whenever number of developers commit their respective code in the shared repository and finally code is merged to master branch
+.. later we will be building the code by using Ant , graddle , Maven
+CI is limited to Automated Build and automated test is not as part of CI
+
+With the help of CI, we are auto building the code later with the help of contionus deployment , we can deploy the 
+fully qualified build in the QA Server for System testing
+
+
+Continous Development ---> Continous Integration ---> Continous Deployment ---> Continous Delivery
+1. Checkin the code       1. Buidling the code       1. Deploy the fully        1. It is successful when CI and CD is successful
+2. Merging the code          using Maven, Ant          qualified code 
+3. Commit in Shared         (Build Management tool)    in QA Staging Server 
+Repository                                             for testing
+
+
+CICD : Continous Integration and Continous Deployment ***********
+
+Github credentials:
+--------------------
+github.com
+username: karthickjaipal
+password: kartic@9632
+
+Continous Deployment & Monitoring:
+
+* Configuration management: 
+1. Ensure that the servers where the application is deployed should satisfy minimal functional requirements and performance
+2. Ensure same code version is deployed in all servers
+3. Releasing the build in all servers
+4. Maintaion configuration consistency at all servers : Same OS , Brower version etc
+
+* Containerization : will have set of tools to maintain configuration consistency across all servers
+
+Continous Monitoring : It is to monitor the System requirements like OS , Storage , RAM , CPU usage etc...
+
+
+
+*********Version Control system:*****************
+
+GIT : Distributed version control system : in this VCS, the copy of Centralised Repository placed in the Client server will be distributed between the local repository
+of the developer machines... with the PUSH and PULL Mechanism , the code are commited and pushed to the server repository and the latest code is pulled and will 
+be taken as an update by the developers3
+GIT : Version control management tools
+GIT HUB : Centralised Repository
+
+
+Git Basic commands:
+
+In the git configuration file:
+
+To configure the user:
+$git config --global user.name "karthick, jaipal"
+
+To configure the email id:
+$git config --global user.email "user@gmail.com"
+
+To display the complete configuration properties list:
+$git config --list
+
+
+Reason: GIT configuration properties file would take some random id and email So we need to configure things in the configuration file
+
+for help command:
+$git help
+
+for help of particular command:
+$git help add
+
+
+To initialize the empty git repository inside the directory(placed in desktop)
+$ git init
+
+or right click on folder --> git bash here --> $git init
+ 
+To check the status of git repository
+$ git status
+
+create a txt file inside the directory (placed in desktop) eg., samplefile.txt
+
+$git add . //command to add all files
+
+To add the file to the git repository:
+$git add samplefile.txt
+
+To commit the changes:
+$git commit -m "My first git commit"
+
+Now check any files to be committed
+$ git status
+
+ Now change the content in the Samplefile.txt file
+ 
+$git status
+
+$git add.
+
+$git commit -m "My second git commit"
+
+$git status
+
+To check the commit log:
+$git log
+
+To check the commit history of particular specific user:
+$git log --author="username"
+
+Steps for Configuration settings:
+----------------------------------
+$git config --list
+$git config --global user.name="karthick"
+$git config --global user.email "user@gmail.com"
+
+$git config --global --list
+$git config --global -e -- with this command all the global config are opened in git text editor: notepad++
+
+
+ 
+Steps to add you changes in the git repository:
+-----------------------------------------------
+1. Create a directory for you project in the machine e.g., Desktop
+2. add files to the directory
+3. initialize the git repository inside the directory: $git init
+4. later check the status of git repository $git status
+5. add the files to tge git repository $git add.
+6. commit the files to the git repository $git commit -m "my first commit"
+7. check the status of git repository after the commit $git status
+8. later, check the commit logs by $git log
+   check for the specific user commit $git log --author="username"
+
+GIT workflow:
+---------------
+STAGES:
+---------
+Working area: where the files are changed and modified inside the project directory
+Staging area: where the modified files are added to the GIT repository $git add.
+Repository: The files which are moved to the git repository are commited to the git repository $git commit   
+
+To find the difference btw the content in the file of local repository and Working area ----- $git diff
+
+Note: The above commands shows the difference .. only if the files are in the working area and as well as in the local repository
+
+To find the difference btw the content in the file of local repository and Staging area ----- $git diff --staged
+
+To delete a file in git : $git rm "file_name" --> it removes the file from Staging area and later the changes to be commited to the git repository $git commit
+
+other way, a file can be deleted from working area and later the changes to Staging area by $git add. and later committing the changes by $git commit
+
+
+Key points:
+-----------
+Working area--> Staging area : $git add.
+Staging area-->Local repository(./git) : $git commit
+
+To Create centralised Repository and link with the local repository:
+
+$git remote add origin "path of the centralised repository"
+
+Create a centralised repository say e.g., MySeleniumproject
+Create a local repository say e.g., MySeleniumproject
+Initialize the local repository by $git init
+Later, connect the local repository to centralised repository by $git remote add "/path of the centralised repository"
+Later, pull the master branch to the local repository by $git pull origin  <branch name> e.g.,                 $git pull origin master
+Later , create a file in the Working area $git add. to Staging area $git commit -- commit to local repository
+Later, push the file in the local repository to Centralised repository by                                      $git push origin master
+
+
+Note:
+$git push origin master : to push the code from local repository to centralised repository
+$git pull origin master : to pull the code from centralised repository to local repository
+Always before you push the code ensure you pull the latest code from centralised repository and then you push the code of yours to centralised repository
+
+Creating and switching from one branch to another branch:
+--------------------------------------------------------
+$git branch developer
+$git checkout developer : switch from master to developer
+you will be now in develpoer branch.
+Now you can create files , add and commit to developer branch
+The newly added files will be in the developer branch but not in the master branch
+Once the new added files are tested later can be merged to the master branch
+$git branch : to list the branch
+
+Commands:
+$git branch <branch_name> : to create the branch
+$git checkout <branch_name> : to switch from branch 
+$git branch : to list the branch
+
+Note: here the files are stored in different branch doesnt mean it occupies space/memory everywhere it is the pointers 
+
+
+Working Area
+It is the place where all the files are created locally
+
+Staging Area:
+It is the place where all the files are added to the staging area $git add .
+
+local repository/git repository:
+The local repository can be initialized by $git init
+The status can be changed by $git status
+It is the local repository where all the files are committed by $git commit -m "my first commit"
+later to be sync'ed with the Centralised Repository by $git remote add "/path of the centralised repository"
+
+With the command , $git remote add "/path of centralised repository" -- Both local git repository and centralised repository are connected 
+
+Centralised Repository(by default master branch):
+To push the code changes/files from local git repository to centralised repository by $git push origin master
+To pull the code changes/files from centralised repository to local git repository by $git pull origin master
+
+Since there will be one default branch, Master branch We are in need of creating new branches later can merged to the single Master branch
+
+$git branch <branch name> this will create a branch under Master branch ... the files in the master branch will be pointed to the newly created developer branch
+Later , without touching the master branch, few files can be added only to the new developer branch by switching to the developer branch
+$git checkout developer ... 
+
+Now u will be working in the developer branch , So when u add the files to Staging Area later commit the files it will be committed to the developer branch
+Later push the changes to centralised Repository by $git push origin developer
+
+All the changes are present in both local git repository and centralised repository of developer branch
+
+First go to the branch where you need to do the merge (receiver)
+$git merge <source branch>
+$git merge developer
+
+The files are upated to the master branch in the local git repository
+later the push the changes by $git push origin master
+
+Create new branch under the developer branch say $git branch tester in the git repository now to connect with Centralised repository by $git push origin tester
+now take an update from master branch by $git pull origin master 
+
+Now add few test case files to working area and later to Staging area by $git add . and commit the changes to tester branch by $git commit -m "mytestingcommit"
+later with all the master branch updates and new added files .... now push the latest code to tester branch by $git push origin tester and now merge the code
+to the master branch by $git checkout master and later $git merge tester ... Successfully the changes of tester branch is merged with master branch.
+
+Revert the changes commited:
+-------------------------------
+
+A file is created in working area and later added to Staging area by $git add .
+If u want to revert the changes made in Staging area by $git reset HEAD <filename>	
+
+Tp revert the last commit from the local git repository if the changes done are incorrect 
+$git reset HEAD~
+
+Adding/removing of git repository to an existing project:
+------------------------------------------------------
+Create a Selenium_automation_project
+now inside the project . initialize git by $git init .. this will convert the project as git project
+check for the status of the repository by $git status
+then add the directory and files to staging area by git add .
+Later , commit to the git repository by $git commit -m "my project commit"
+Later , connect the local repository to centralised repository(GITHUB)--Master branch by $git remote add </path of centralised repository>
+then push the changes by $git push origin master
+
+removing the git repository from the project by $rm -rf .git
+
+Adding an existing GITHUB project to your GITHUB repository :
+--------------------------------------------------------------
+It can done by fork option provided in the GITHUB repository window
+
+Getting an existing GITHUB project from the centralised repository to our local system by clone option provided
+----------------------------------------------------------------------------------------------------------------
+clone or download button by downloading the zip file of the project
+or from cmd : $git clone <path of the project in centralised repository>
+
+
+Back-out the changes from GIT Repository
+----------------------------------------
+create file in working repository
+add the file to staging repository or staging the changes for commit by $git add . / $git add <filename>
+revert the changes which are staged for commit by $git reset HEAD <filename>
+revert the changes which are done to the file in the working repository by $git checkout -- <filename>
+
+Rename and moving of files in GIT Repository:
+----------------------------------------------
+It is encouraged to do rename/moving of files in GIT rather than in Local working area by $git mv <file_name> <file_name> as it has less complications and 
+steps to get staged 
+
+Commit History:
+-----------------
+$git log
+Details provided:
+
+commit hash/id
+Author
+date of commit
+commit message 
+
+$git log --oneline --graph --decorate
+$git log --since="2 days ago"
+$git log -- <filename>
+$git show <commit_hash>
+
+Usage of GIT alias:
+-------------------
+For e.g., there is an commit history command : $git log --all --graph --oneline --deacorate
+To create the alias of the above command
+
+$git config --global alias.<alias_name> "log --all --graph --oneline --decorate"
+
+e.g.,$git config --global alias.history "log --all --graph --oneline --decorate"
+
+On now typing the command $git history -- logs are displayed
+
+Updating the alias:
+$git config --global --e : opened in text editor
+edit the alias in text editor and Save
+
+
+Exclude the unwanted files:
+--------------------------
+create a directory as .gitIgnore and add the file name  in .gitIgnore directory
+this gitIgnore will remove the file from the project 
+Once it is done , add by $git add .gitIgnore to the staging repository
+and commit to git repository by $git commit -m "gitIgnore is added"
+
+There are few patterns such as 
+*.log
+Foldername/
+
+Git Comparison:
+------------------
+Working Area and Staging Area : $git diff , on specific file $git diff <file_name>
+Working Area and Local Repository : $git diff HEAD , on specific file  $git diff HEAD <filename
+Staging Area and Local repository : $git diff --staged HEAD , on specific file	$git diff --staged HEAD <file_name>
+
+GIT Commit comparison:
+---------------------
+$git diff <commit_id1> <commit_id2>
+$git diff HEAD HEAD^
+
+GIT - Branch:
+-------------
+Current working branch of GIT Repository : $git status
+To list the branch in GIT repository : $git branch / $gi branch -a
+To create Branch : $git branch <branch_name>
+To switch to different branch : $git checkout <newbranchname>
+To rename the branch : $git branch -m mybranch developer
+To delete the branch : $git branch -d developer
+To merge the branch : $git merge <source_branch> / $git merge <source_branch> -m "merging the code"
+ 
+Merge Conflicts and Resolving Manually:
+When two developer does the same line of change in the same file with two different branches , then during merge of branch there results a Merge conflict and 
+it has to be resolved manually
+
+
+
+
+
+
+
+Download GIT , choosing the OS eg.., Windows
+Install in the local system
+command prompt:
+to talk with github/git , please provide the details of you
+$git config --list
+$git config --global user.name "karthick"
+$git config --global user.email "karthickjaipal@gmail.com"
+such as name and email
+
+Create a folder and copy few files in it.
+initialise git .... in the project which has to be pushed to Github and it is a hidden file
+Note: Wheneva u want to push ur project to github , u should initialize the git in the project ($git init)which has to be pushed to Github
+After initializing git, later u should add all the files to stash(Staging environment) **** by command ($git add *)
+Note: paticular file / complete project can be added to stash(Staging environment)
+
+To remove the file from stash : $git rm --cached <filename> 
+Only the files which is added to the stash can be committed and only the committed files can be pushed to Github.
+Commit all the codes which is present in Staging by $git commit -m "My first commit"
+After that, Please add the remote repository to ur local repository
+$git remote add origin https://github.com/karthickjaipal/GitDemo.git
+
+********************************************************************************************
+commands: to add ua poject which is in the local repository to Centralised repository(github)
+$git init
+$git add/git add *
+$git commit -m "message"
+Please add the remote repository to ur local repository for the first time
+$git remote add origin "Centralised_repository_url"
+$git push origin master
+
+First time to get the project from GITHUB to ua local repository:
+$git clone https://github.com/karthickjaipal/GitDemo.git
+After cloning, 
+$git pull origin master
+*********************************************************************************************
+
+Switch and create new branch: $git checkout -b <branch name>
+Switch between branches: $git checkout <branch name>
+list of branch and current active branch : $git branch
+you should merge the changes from develop branch to master branch:
+be on the master branch
+then $git merge develop
+
+To rename the branch : $git branch -m mybranch developer
+To delete the branch : $git branch -d developer
+To merge the branch : $git merge <source_branch> / $git merge <source_branch> -m "merging the code"
+
+********************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Important commands:
+
+$git config
+$git config --list
+$git config --global user.name "karthick, jaipal"
+$git config --global email "user@gmail.com"
+$git help
+$git help <command name>
+$git init
+$git status
+$git add * /$git add <filename>
+$git commit -m "message"
+$git log
+$git diff
+$git diff --staged
+$git rm "filename"
+$git remote add origin <./path of the centralised repository>
+$git push origin <branch name>
+$git clone <./path of the centralised repository> 
+$git pull origin <branch name>
+
+$git branch
+$git branch <branch name>
+$git checkout -b <branch name>
+$git checkout <branch name>
+@receiver branch, $git merge <source branch>
+$git reset HEAD <file name> ------ to unstage
+$git reset HEAD~
+$git checkout -- <filename>  ------- to ignore the changes done in a file
+
+
+
+
+
+
+
+
+Merging Branches GIT: 
+-------------------
+
+
+
+
+
+
+
+
+   
+
+
+ 

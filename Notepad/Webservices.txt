@@ -1,0 +1,66 @@
+WebServices are subset of API's
+WebServices are collection of Operations(resources)/methods
+
+
+Soap WebServices follows some standard protocal called (SOAP Simple Object Access Protocal)
+to send the request and receive the response
+
+Interoperability issue : different platforms
+
+Service should be up and running in web with some port :<WebService>
+
+WSDl <WebService Description Language>
+
+
+Contract of the WebService:<Service Description/ WSDL>
+
+Is the WSDL file which comprises of all operations.
+Each operations and its parameters
+
+WSDL is a lengthy complicated XML Document with all operations and its parameters details:
+- where the service is hosted
+- operations which supports
+- Parameters details : datatypes
+
+wsdl definitions
+wsdl messages
+wsdl binding : number of operations it supports
+- wsdl operations
+wsdl service
+
+its always we send soap messages<request> and we get soap messages<response>
+
+WSDl                                                  Soap Protocal
+- how to connect and make request                    - Communication protocal
+
+
+
+
+Assertions in SOAP UI:
+
+ 1. Contains
+ 2. Not Contains
+ 3. Valid HTTP Response code
+ 4. Response SLA : Response time
+ 5. Soap Response : Response format
+ 6. Senstive information exposure : 
+ 7. Xpath match
+ : value of the node (@particular node)
+ : exists of node
+ : number of occurence of node
+ : Regular Expression using WildCards
+ 
+ 
+ Restful WebServices:
+ -------------------
+ It is not a protocal , where it is a Rest Architecture
+ We access all the resources of a WebService, by using standard HTTP Methods CRED
+ 
+ GET Request: Parameters can be sent with the request
+ POST Request: Parameters cant be sent with the request
+ 
+ 
+ 2 ways of Scripting- Soap UI:
+ -----------------------
+ 1. Groovy scripting : xml responses automation
+ 2. Scripting Assertions: json and xml

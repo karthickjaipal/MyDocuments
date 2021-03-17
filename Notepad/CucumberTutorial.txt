@@ -1,0 +1,848 @@
+Cucumber - Java Framework
+-------------------------
+it is a BDD: Behaviour Driven Development Framework.(It is one of the powerful Framework )
+it is not an Automation tool to automate your test cases.
+
+Gherkins Language:
+-----------------
+Business Readable Domain Specific language.
+language is used to have a generic way of writing a software scenario.
+
+Keywords:
+---------
+Feature
+Scenario
+features
+glue
+tags
+Scenario Outline
+Examples
+dryRun
+Strict
+DataTables
+tags
+Hooks
+Tagged Hooks
+
+
+
+Scenario: test case/test scenarios
+Given<<<<<<<<<<<<<Pre-conditions>>>>>>>>>>>>>>>>>.
+When<<<<<<<<<<<<<<<Steps/user actions>>>>>>>>>>>>>>>>
+then<<<<<<<<<Expected output>>>>>>>>>>>>>>>>>>>>
+and <<<<<<<expected conditions>>>>>>>>>>
+
+Feature:
+In order
+As a
+I want to
+
+Feature File : it is test suite which consists of all scenarios
+
+Feature: Its a requirement (End to end functionality)
+Feature file
+
+
+Given: Preconditions are mentioned 
+When : the user actions
+then : Expected output
+and : is used to represent positive scenario
+but : is used to represent negative scenario	
+
+
+Cucumber Installation:
+-----------------------
+Java
+Eclipse
+Natural plugin (to support gherkin's Language)
+Cucumber project skeleton can be provided by Maven(Build Management tool)
+Maven project provides structured templates to automate our test cases
+cucumber-java and cucumber-junit jars are needed and are taken into the project by using pom.xml file
+
+When you need to automate your test cases using Cucumber framework
+
+Scenarios: test cases are written in Jherkin's language
+Step definition: which contains the code which does the actions
+junit test runner : use to connect the step definition with the scenarios to run the feature file
+
+
+Feature file is created
+Stepdefintions are created for the feature file using Tidy Jherkins 
+There should be one mapping implementation for one jherkin line
+Test Runner:
+@CucumberOptions(features="<path of feature file(package level)>" , glue="Stepdefintion package" )
+Regular expression to pass inputs as arguements.
+Too many arguements ,go for DataTables
+Parameterization: Scenario Outline and Examples
+Control of execution of scenarios(test cases) using tagging under glues:
+Background to be configured to run before every scenario in common
+Hooks to be configured to run before and after specific scenario selected(@Before and @After only supported by java for Cucumber)
+Note: when u use background, dont use hooks and vice versa
+generating reports in TestRunner in html,json,xml formats
+Attributes:
+dryRun for checking the mapping the stepdefinition with jherkins steps
+monochrome for better console output
+strict for check for compulsory mapping between for ensuring 100% implementation **********
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features="pathOfFeaturePackage",glue={"stepDefinitionPackage"},tags={"@hppostpaid"})
+
+
+Maven:
+-----------
+It is a project management and build management tool.
+-It provides Central repository where we can get all jar files that to be configured in our Project.
+And wheneva we install maven , an .m2 folder gets created which will have all jars stored in it ... whenvea u mention any dependencies in porm.xml file
+It helps us to maintain a common structure across organization
+It helps us to make flexible with CI tool(Continous integration tool: Jenkins)
+It provides Strong Plugins such as TestNG and Junit for Testcase Execution Management.
+
+Install and Configuration:
+---------------------------
+Download Maven
+Create MAVEN_HOME and add to the path variables in Environment variables.
+cmd: mvn --version
+
+Terminologies:
+--------------
+group_id: uniquely identifies the software that u search for eg., Selenium
+artifact_id: internally again sub identifies from the software that u search for eg., Selenium-java
+version : specific version that u need
+archetype:generate : it is used to generate a project with our groupId and artifactId
+
+Command to create Maven project from command prompt:
+-------------------------------------------------------
+
+********** mvn archetype:generate -DgroupId=qaclickacademy -DartifactId=MavenIintro -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Here, 
+-groupId : is the group/package which gets created with the groupId name
+-artifactId : is the name of your project
+-DarchetypeArtifactId=maven-archetype-quickstart we use quickstart, which provides us a project structure for testing so we go for this.
+
+After running the above command , check in C:\Users\karthick_jaipal\, project by name MavenIintro  is created
+
+Once the project is created , in order to integrate with eclipse we need .class and .project files which can be created by running the below command:
+
+********** mvn eclipse:eclipse
+
+Check for the files created in C:\Users\karthick_jaipal\MavenIintro
+
+
+
+Very Important******: maven surefire plugin is used to execute all tests in the project
+
+Three commands:
+mvn clean
+mvn complie check for syntatical errors
+mvn test
+
+
+In order to execute only single test in a project using maven:
+*********mvn -Dtest=<testname> test
+
+
+
+************ HOOKS *****************
+
+In the world of testing, you must have encountered the situations where you need to perform the prerequisite steps before testing any test scenario. 
+This prerequisite can be anything from:
+
+Starting/Initializing a webdriver
+//Initialization
+Webdriver driver=new ChromeDriver();
+Setting up DB connections
+Setting up test data
+Setting up browser cookies
+Navigating to certain page
+or anything before the test
+
+In the same way, there are always after steps as well of the tests like:
+
+Killing the webdriver
+//Quit the Brower
+driver.quit();
+Closing DB connections
+Clearing the test data
+Clearing browser cookies
+Logging out from the application
+Printing reports or logs
+Taking screenshots on error
+or anything after the test
+
+@Before - Before hooks run before the first step of each scenario. This is commonly used for prerequisite steps that need to be performed before the actual test scenario. For example, this can be as follows.
+
+1. Initialize a web driver: This is the most common use case. We need to initialize the driver once before launching the test.
+
+2. Establish DB connections: Application may require access to test data at the start of the test. A couple of examples could be -
+* read data through any external sources like DB.
+
+3. To set up test data: Application may require to access test data at the start of the test. A couple of examples could be -
+* read data from the property file
+* read data through any external sources like DB, XL, JSON, etc.
+
+4. To set browser cookies: Certain times, the application requires to set some cookies to achieve the functional goal.
+
+5. Navigate to default page: Whenever a test is launched, it may need to navigate to the default application URL.
+--- driver.get("<<APP URL >> /admin");
+
+@After - After hooks run after the last step of each scenario, even when steps are failed, undefined, pending, or skipped. This is commonly used for steps that need to be performed after the actual scenario gets executed. For example, this can be as follows.
+
+1. Quit the web driver: This is most commonly used. After each test, we are supposed to kill the browser in order to make tests independent.
+2. To close DB connections: If we have established the DB connection at the beginning of the test, then it is advisable to terminate at the end of the tests.
+3. To clear the test data/browser cookies: As @After hook will execute at the end of each test, we have clean up activity here.
+4. Sign out from the application: Signing out from the application is really essential in order to make tests independent.
+5. Take screenshots for fail/pass scenarios: In order to make sure the test runs correctly, We always need to take a screenshot in case of any failure.
+
+HOOKS Examples:
+****************
+
+@Before
+public void setup() {
+// Do something before each scenario
+}
+
+@After
+public void teardown(Scenario scenario) {
+// Do something after each scenario
+}
+
+@RunWith(Cucumber.class) 
+@Cucumber.Options(features="feature", glue="stepdefinition") 
+
+public class Testrunner { }
+
+TAGGED HOOKS Examples:
+**********************
+
+@Before("@SmokeTest")
+public void setup() {
+// Do something before each scenario
+}
+
+@After("@SmokeTest")
+public void teardown(Scenario scenario) {
+// Do something after each scenario
+}
+
+
+@RunWith(Cucumber.class) 
+@Cucumber.Options(features="feature", 
+glue="stepdefinition", tags = {"@SmokeTest"}) 
+
+public class Testrunner {}
+
+
+TAGGED HOOKS with Multiple Scenario Examples:
+*********************************************
+@Before("@SmokeTest, @RegressionTest")
+public void setup() {
+// Do something before each scenario
+}
+
+@After("@SmokeTest, @RegressionTest")
+public void teardown(Scenario scenario) {
+// Do something after each scenario
+}
+
+
+@RunWith(Cucumber.class) 
+@Cucumber.Options(features="feature", 
+glue={"stepdefinition"}, tags = {"@SmokeTest, @RegressionTest"}) 
+
+//Undefined runner class
+public class Testrunner {}
+
+-----------------*********----------------------
+
+@RunWith(Cucumber.class) 
+@Cucumber.Options(features="feature", 
+glue={"stepdefinition"}, tags = {"@SmokeTest", "@RegressionTest"}) 
+
+//Undefined runner class
+public class Testrunner {}
+
+ORDER OR PRIORITY OF HOOKS Examples:
+*********************************************
+
+How to set the Order or Priority of Cucumber Hooks?
+The very important thing to note here is:
+
+@Before(order = int) : This runs in increment order, means value 0 would run first and 1 would be after 0.
+@After(order = int) : This runs in decrements order, means apposite of @Before. Value 1 would run first and 0 would be after 1.
+
+public class Hooks {
+ 
+ @Before(order=1)
+    public void beforeScenario(){
+        System.out.println("This will run before the every Scenario");
+    } 
+ @Before(order=0)
+    public void beforeScenarioStart(){
+        System.out.println("-----------------Start of Scenario-----------------");
+    } 
+ 
+ 
+ @After(order=0)
+    public void afterScenarioFinish(){
+        System.out.println("-----------------End of Scenario-----------------");
+    } 
+ @After(order=1)
+    public void afterScenario(){
+        System.out.println("This will run after the every Scenario");
+    } 
+ 
+}
+
+DataDrivenTesting without Examples:
+====================================
+************Scenario Outline **************
+
+Feature: Login Action
+ 
+Scenario Outline: Successful Login with Valid Credentials
+Given User is on Home Page
+When User Navigate to LogIn Page
+And User enters "TestUser1" and "TestPassword"
+Then Message displayed Login Successfully
+
+
+DataDrivenTesting with Examples:
+================================
+************Scenario Outline **************
+
+Feature: Login Action
+ 
+Scenario Outline: Successful Login with Valid Credentials
+Given User is on Home Page
+When User Navigate to LogIn Page
+And User enters "<username>" and "<password>"
+Then Message displayed Login Successfully
+Examples:
+    | username   | password |
+    | testuser_1 | Test@153 |
+    | testuser_2 | Test@153 |
+
+
+DataDrivenTesting with Data Tables:
+================================
+********************* DATA Table **************************
+
+Scenario:
+Given User is on Login Page
+When User enters all valid details
+|testuser| testpassword|
+and
+When User clicks on Login Button
+Then User should be successfully logged In
+and User should be displayed with Home page
+
+public void method1(DataTable data)
+{
+List<List<String>> obj = data.raw();
+String username= obj.get(0).get(0);
+String password= obj.get(0).get(1);
+}
+
+******************************************************************************
+
+Difference between Scenario Outline & Data Table
+Scenario Outline:
+
+This uses Example keyword to define the test data for the Scenario
+This works for the whole test
+Cucumber automatically run the complete test the number of times equal to the number of data in the Test Set
+Test Data:
+
+No keyword is used to define the test data
+This works only for the single step, below which it is defined
+A separate code needs to understand the test data and then it can be run single or multiple times but again just for the single step, not for the complete test
+
+DataDrivenTesting with (Maps in Data Tables):
+<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Maps in Data Tables with Header
+===============================
+********************* DATA Table **************************
+
+Scenario:
+Given User is on Login Page
+When User enters all valid details
+|username| Password|
+|testuser| testpassword|
+and
+When User clicks on Login Button
+Then User should be successfully logged In
+and User should be displayed with Home page
+
+public void method1(DataTable data)
+{
+List<List<String>> obj = data.raw();
+String username= obj.get(1).get(0);
+String password= obj.get(1).get(1);
+}
+
+
+Maps in Data Tables with Multiple Data
+=======================================
+********************* DATA Table **************************
+
+Scenario:
+Given User is on Login Page
+When User enters all valid details
+|testusername|testpassword|
+|testuser1| testpassword1|
+|testuser2| testpassword2|
+and
+When User clicks on Login Button
+Then User should be successfully logged In
+and User should be displayed with Home page
+
+public void test(DataTable data) throws Throwable {
+ 
+ //Write the code to handle Data Table
+ for (Map<String, String> obj : data.asMaps(String.class, String.class)) {
+ driver.findElement(By.id("log")).sendKeys(obj.get("testusername")); 
+     driver.findElement(By.id("pwd")).sendKeys(obj.get("testpassword"));
+     driver.findElement(By.id("login")).click();
+ }
+ 
+
+Map Data Tables to Class Objects
+=======================================
+********************* DATA Table **************************
+
+Scenario:
+Given User is on Login Page
+When User enters all valid details
+|testusername|testpassword|
+|testuser1| testpassword1|
+|testuser2| testpassword2|
+and
+When User clicks on Login Button
+Then User should be successfully logged In
+and User should be displayed with Home page
+
+public void user_enters_testuser_and_Test(List<Credentials>  usercredentials) throws Throwable {
+ 
+ //Write the code to handle Data Table
+ for (Credentials credentials : usercredentials) { 
+ driver.findElement(By.id("log")).sendKeys(credentials.getUsername()); 
+     driver.findElement(By.id("pwd")).sendKeys(credentials.getPassword());
+     driver.findElement(By.id("login")).click();
+ } 
+
+package stepDefinition;
+ 
+public class Credentials {
+ private String username;
+ private String password;
+ 
+ public String getUsername() {
+        return username;
+    }
+ public String getPassword() {
+        return password;
+    } 
+}
+ 
+
+******************* dry run **************************
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+  features = "Feature"
+  ,glue={"stepDefinition"}
+  ,dryRun = true
+  )
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+  features = "Feature"
+  ,glue={"stepDefinition"}
+  ,dryRun = false
+  )
+  
+  
+dryRun option can either set as true or false. If it is set as true, it means that Cucumber will only checks that every Step mentioned in the Feature File 
+have corresponding code written in Step Definition file or not. So in case any of the function is missed in the Step Definition for any Step in Feature File, 
+it will give us the message. For eg. in the following example we have set 'dryRun=True':
+
+************************* Strict *****************************
+
+
+Using the --strict flag will cause cucumber to fail unless all the step definitions have been defined. 
+
+false: If strict option is set to false then at execution time if cucumber encounters any undefined/pending steps 
+then cucumber does not fail the execution and undefined steps are skipped and BUILD is SUCCESSFUL and
+
+true: if Strict option is set to true then at execution time if cucumber encounters any undefined/pending steps 
+then cucumber does fails the execution and undefined steps are marked as fail and BUILD is FAILURE.
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		strict = true
+		)
+		
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		strict = false
+		)
+******************************* TAGS ***********************************
+
+Logically ANDing and ORing Tags:
+================================
+Requirements are complicated, it will not always simple like executing a single tag. 
+It can be complicated like executing scenarios that are tagged either as @SmokeTest or @RegressionTest. 
+It can also be like executing scenarios that are tagged both as @SmokeTest and @RegressionTest. 
+Cucumber tagging gives us the capability to choose what we want with the help of ANDing and ORing.
+
+Tags that are comma-separated are ORed.
+Tags which are passed in separate quotes are ANDed
+
+
+Execute all tests tagged as @SmokeTests
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		tags = {"@SmokeTests"}
+		)
+
+Execute all tests tagged as @SmokeTest OR @RegressionTest
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		tags = {"@SmokeTest, @RegressionTest"}
+		
+		)
+
+Execute all tests tagged as @SmokeTest AND @RegressionTest
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		tags = {"@SmokeTest", "@RegressionTest"}
+		
+		)
+
+Execute all tests of the feature tagged as @FunctionalTests but ***skip scenarios tagged as @SmokeTest 
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		tags = {"~@SmokeTest", "@FunctionalTests"}
+			
+		)
+
+Execute all tests which are not at all tagged in all the Features
+
+@RunWith(Cucumber.class)
+@CucumberOptions(
+		plugin = {"pretty", "html:target/cucumber"},
+		features = {"features"},
+		glue={"stepdefinitions"},
+		tags = {"~@SmokeTest", "~@FunctionalTests"}
+		
+		)
+
+***************************** BACKGROUND ************************************
+
+Background in Cucumber is used to define a step or series of steps that are common to all the tests in the feature file. 
+It allows you to add some context to the scenarios for a feature where it is defined. 
+A Background is much like a scenario containing a number of steps. 
+But it runs before each and every scenario where for a feature in which it is defined.
+
+For example, to purchase a product on any E-Commerce website, you need to do the following steps:
+
+Navigate to Login Page
+Submit UserName and Password
+After these steps only you will be able to add a product to your cart/basket and able to perform the payment. 
+Now as we are in a feature file where we will be testing only the Add to Cart or Add to Bag functionality, 
+these tests become common for all tests. So instead of writing them again and again for all tests, we can move it under the Background keyword.
+
+
+Feature File:
+
+Background: User is Logged In
+ Given I navigate to the login page
+ When I submit username and password
+ Then I should be logged in 
+ 
+Scenario: Search a product and add the first product to the User basket
+ Given User search for Lenovo Laptop
+ When Add the first laptop that appears in the search result to the basket
+ Then User basket should display with added item
+ 
+Scenario: Navigate to a product and add the same to the User basket
+ Given User navigate for Lenovo Laptop
+ When Add the laptop to the basket
+ Then User basket should display with added item
+ 
+ 
+ In the above example, we have two different scenarios where a user is adding a product from search and directly from the product page. 
+ But the common step is to logIn to website for both the scenario. This is why we create another Scenario for LogIn but named it as Background rather than a Scenario. 
+ So that it executes for both the Scenarios
+ 
+ 
+Background with Hooks
+*********************
+This is so interesting to see the working of Background with Hooks. The background is run before each of your scenarios but after any of your @Before hook.
+
+To get it straight, let’s assign a task to the Before & After Hook in the same test.
+
+@Before: Print the starting logs
+@Before: Start browser and Clear the cookies
+@After:  Close the browser
+@After: Print the closing logs
+
+
+Good practices for using Background
+It is really necessary to understand the right usage of Background. As hooks as well give similar kind of functionality and moreover almost all the tasks can be done by hooks as well. This is why it is critical to use the background in the right place in the test.
+
+Feature Dependency
+
+Any feature level dependency should be tie with the background and any scenario level dependency should be tie with hooks.
+
+Feature level --> BACKGROUND as Background serves as one of the Scenario in a particular feature file
+Scenario level --> HOOKS serves with @Before and @After annotations for all scenarios in the feature file
+
+Keep Background short.
+
+You’re expecting the user to actually remember this stuff when reading your scenarios. 
+If the background is more than 4 lines long, can you move some of the irrelevant details into high-level steps? See Calling Steps from Step Definitions.
+
+Make your Background section vivid.
+
+You should use colorful names and try to tell a story, 
+because the human brain can keep track of stories much better than it can keep track of names 
+like “User A”, “User B”, “Site 1”, and so on.
+
+ 
+
+ 
+
+
+		
+		
+		
+LINKS:
+https://www.toolsqa.com/cucumber/cucumber-tags/
+https://www.toolsqa.com/postman/pre-request-script-in-postman/
+https://learning.postman.com/docs/writing-scripts/script-references/postman-sandbox-api-reference/
+
+
+
+
+Scenario: User failure login
+Given User is on Login Page
+When User enters valid username and invalid password
+Then User is on Home Page
+But error message is displayed
+
+Scenario: User failure login
+Given User is on Login Page
+When User enters Invalid username and valid password
+Then User is on Home Page
+But error message is displayed
+
+
+_____________________________________________________________________________________________________________________________________________________________
+
+
+Basic Access Authentication / HTTP Basic Authentication
+A Basic Access Authentication is the most simple and basic type of authorization available. 
+It requires just a username and password for checking the authorization of any person (That is why we say basic access authentication). 
+The username and password are sent as header values in the Authorization header. 
+While using basic authentication we add the word Basic before entering the username and password. 
+These username and password values should be encoded with Base64 otherwise the server won’t be able to recognize it. 
+We will follow these steps to check whether we can access the same API we used above or not
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+console.log("This is pre request scripts");
+
+postman.setEnvironmentVariable('username','Harish');
+var usernamevalue=postman.getEnvironmentVariable('username');
+console.log(usernamevalue);
+
+postman.clearEnvironmentVariable('username');
+var usernamevalue=postman.getEnvironmentVariable('username');
+console.log(usernamevalue);
+
+*****************************************************************************
+New Scripts:
+-------------
+
+pm.environment.set('username','Karthick');
+var usernamevalue=pm.environment.get('username');
+console.log(usernamevalue);
+
+pm.environment.clear('username');
+var usernamevalue=pm.environment.get('username');
+console.log(usernamevalue);
+
+
+pm.globals.set('globalvariablename','globalvariablevalue');
+var g_name=pm.globals.get('globalvariablename');
+console.log(g_name);
+
+pm.globals.clear('globalvariablename');
+var g_name=pm.globals.get('globalvariablename');
+console.log(g_name);
+
+
+Multiple Tests for a Request in Postman with JavaScript Method:
+
+tests[“Status Code is 200”] = responseCode.code === 200;
+tests[“Body contains String"] = responseBody.has(“ToolsQA”);
+tests[“Response time less than 500ms”] = responseTime <1500;
+
+Multiple Tests for a Request in Postman with Functional Method:
+
+
+To validate the response status code:
+-------------------------------------
+pm.test("Status code should be 200 OK " , function() {
+pm.response.to.have.status(200);
+});
+
+pm.test("Status code should be 200 OK " , () => {
+pm.response.to.have.status(200);
+});
+
+pm.test("response code : 200 OK" , function(){
+pm.expect(pm.response.code).to.equal(200);
+});
+
+To validate the response time:
+------------------------------
+
+pm.test("response time less than 500 ms", function(){
+pm.expect(pm.response.responseTime).to.be.below(500);
+});
+
+pm.test("responsebody contains string 'true'" , function()
+{   responseJson=pm.response.json();
+});
+
+Example:1 
+
+pm.test("Check for the response body parameter: title, id" , () =>
+{
+      const responseJson=pm.response.json();
+      pm.expect(responseJson.title).to.equal("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+      pm.expect(responseJson.id).to.equal(1);
+}
+);
+
+pm.test("Check for response status code: 200 , status description : OK , response time < 500 ms", response header, () =>
+{
+pm.response.to.have.status(200);
+pm.expect(pm.response.code).to.equal(200);
+pm.expect(pm.response.responseTime).to.be.below(500);
+pm.expect(pm.response.status).to.equal("OK");
+pm.expect(pm.response.headers.get('Content-Type')).to.equal('application/json; charset=utf-8');
+});
+
+
+pm.test("Check for Response Field: Data Types",() =>
+{ const JsonData= pm.response.json();
+pm.expect(JsonData).to.be.an("object");
+pm.expect(JsonData.userId).to.be.a("number");
+pm.expect(JsonData.id).to.be.a("number");
+pm.expect(JsonData.body).to.be.a("String");
+pm.expect(JsonData.title).to.be.a("String");
+});
+
+
+pm.test("Check for the response body parameter: title, id" , () =>
+{
+    pm.expect(pm.response.code).to.be.equal(200);
+    pm.expect(pm.response.status).to.be.equal("OK");
+    pm.expect(pm.response.responseTime).to.be.below(1000);
+    pm.expect(pm.response.headers.get('Content-Type')).to.be.equal('application/json; charset=utf-8');
+      const responseJson=pm.response.json();
+      pm.expect(responseJson.title).to.equal("sunt aut facere repellat provident occaecati excepturi optio reprehenderit");
+      pm.expect(responseJson.id).to.equal(1);
+      pm.expect(responseJson).to.be.an("object");
+      pm.expect(responseJson.title).to.be.a("String");
+	  pm.expect(responseJson.title).to.be.a("boolean");
+      pm.expect(responseJson.id).to.be.a("number");
+      pm.expect(responseJson.body).to.be.a("String");
+      pm.expect(responseJson).to.be.an("Array");
+      
+}
+);
+
+
+https://www.katalon.com/resources-center/blog/web-api-testing-interview-questions/
+
+
+The OPTIONS Method lists down all the operations of a web service supports. It creates read-only requests to the server.
+
+
+
+
+pm.test("check for the response status code, response time", () =>
+{
+pm.expect(pm.response.code).to.be.equal(200);
+pm.expect(pm.response.status).to.be.equal("OK");
+pm.expect(pm.response.responseTime).to.be.below(1000);
+pm.expect(pm.response.headers.get('Content-Type')).to.be.equal('application/json');
+}
+)
+pm.test("",() =>
+{
+const responsejson= pm.response.json();
+pm.expect(responsejson.title).to.equal("");
+pm.expect(responsejson.title).to.be.a("String");
+pm.expect(responsejson.body).to.be.a("number");
+pm.expect(responsejson.id).to.equal(123);
+pm.expect(responsejson).to.be.an("object");
+}
+)
+
+pm.test("check for response time, code, status and headers",()=>
+{
+pm.expect(pm.response.responseTime).to.be.below(1000);
+pm.expect(pm.response.code).to.be.equal(200);
+pm.expect(pm.response.status).to.be.equal("OK");
+pm.expect(pm.response.headers.get('Content-Type')).to.be.equal('application/json');
+}
+)
+
+const responsejson= pm.response.json();
+pm.expect(responsejson.title).to.equal("");
+
+pm.environment.set('Title', title)
+pm.environment.get('');
+
+pm.test("", ()=>
+{
+Const responsejson=pm.response.json();
+pm.expect(responsejson.title).to.equal("");
+
+
+}
+
+)
+
+
+

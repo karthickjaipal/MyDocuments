@@ -1,0 +1,390 @@
+Which is safer http or https?
+HTTP doesn't have SSL and HTTPS has SSL, which encrypts your information so your connections are secured. 
+HTTPS also has TLS (Transport Layer Security) protocol that HTTP lacks. HTTPS is more secure than HTTP.
+
+SOAP: Y Soap?????????
+-SOAP is the heavyweight choice for Web service access.
+-SOAP is not very easy to implement and requires more bandwidth and resources.
+-SOAP message request is processed slower as compared to REST and it does not use web caching mechanism.
+-Provides SSL support and also WS-Security ,WS-Security which adds some enterprise security features
+-WS-AtomicTransaction : Better Transaction Reliability
+-WS-ReliableMessaging : It supports both Synchronous and Asychronous responses from Server to Client.Provides a guaranteed level of reliability and security
+-If the security is a major concern and the resources are not limited then we should use SOAP web services
+-Like if we are creating a web service for payment gateways, financial and telecommunication related work, 
+ then we should go with SOAP as here high security is needed.
+ 
+REST : Y REST???
+REST is easier to use for the most part and is more flexible. It has the following advantages when compared to SOAP:
+
+-Since REST uses standard HTTP, it is much simpler.
+-REST is easier to implement, requires less bandwidth and resources.
+-REST permits many different data formats whereas SOAP only permits XML.
+-REST allows better support for browser clients due to its support for JSON.
+-REST has better performance and scalability. REST reads can be cached, SOAP based reads cannot be cached.
+-If security is not a major concern and we have limited resources. Or we want to create an API that will be easily used by other developers publicly 
+then we should go with REST.
+-If we need Stateless CRUD operations then go with REST.
+-REST is commonly used in social media, web chat, mobile services and Public APIs like Google Maps.
+-RESTful service returns various MediaTypes for the same resource, depending on the request header parameter “Accept” as application/xml or application/json 
+ for POST and /user/1234.json or GET /user/1234.xml for GET.
+-REST services are meant to be called by the client-side application and not the end user directly.
+ ST in REST comes from State Transfer. You transfer the state around instead of having the server store it, this makes REST services scalable.
+
+Top Down Approach:
+-Contract-first approach
+WebServices: Creates a contract
+Client: It is very difficult for the client to start working without the WSDL from Webservices
+One advantage of this approach, is both client and server code can be written in parallel.
+
+Bottom up Approach:
+-Contract-last approach. 
+SOAP web services require the code to be written first and then WSDL is generated.
+client codes must wait for WSDL from the server side to start working.
+
+
+Authentication:
+Authentication is the process of recognizing a user's identity. ... The credentials provided are compared to those on a file in a database of the 
+authorized user's information on a local operating system or within an authentication server.
+
+Password-based authentication. Passwords are the most common methods of authentication. ...
+Multi-factor authentication. ...
+Certificate-based authentication. ...
+Biometric authentication. ...
+Token-based authentication.
+
+Two-Factor Authentication: 
+SMS related codes
+App-Generated Codes like Google Authenticator
+App based Authentication
+Email based Systems
+
+
+- What are the types of bugs we face when performing API testing?
+
+Types of bugs found in API testing
+Functionality Bug:
+------------------
+Duplicate or missing functionality.
+Response data is correctly handled and formatted to specifications in case of JSON/XML
+Improper messaging and Call sequence.
+Error handling mechanism is incompatible where in API throws proper error code and error description on system failure.
+Performance Bug:
+----------------
+Multi-threaded issues in terms of performance. In case of Stress testing where huge amount of data on boarded to API should withstand and also verifying
+threading handled for such issues.
+Security Bug:
+-------------
+Security issues in terms of data privacy which is shared across different systems are rightly encrypted.
+Reliability Bug:
+-----------------
+Reliability issues. Check API works and perform with different systems and applications integrated
+ 
+ 
+a. Major Challenges faced during API testing:
+
+- Test data management:
+- Initial Setup of API Testing
+- Updating the Schema of API Testing/Impact of change
+- Parameter Selection/Parameter Combination
+- Output verification and validation:
+- Call sequencing
+- Tracking System Integration
+
+b. Points to validate during API testing:
+
+Validating the datatype of every parameter used in the resource(request payload)
+Invalid response codes.
+Invalid response headers.
+Response time as per API design
+API time-outs.
+Slow API response with respect to response data bytes.
+Incorrect required data in JSON responses.
+Missing required text in response bodies.
+Slow response for customers in specific locations.
+
+Initial Setup of API Testing:
+----------------------------
+Environment setup and Backend configurations
+
+Updating the Schema of API Testing:
+-----------------------------------
+When there is a requirement change/ change in the API design. there will be addition/reduction of data
+
+Parameter Selection/Parameter Combination : Mandatory /NON Mandatory Parameter checks , DataTypes of Parameters check
+------------------------------------------
+APIs handle communication between systems by assigning data values to parameters and passing those parameters through data requests. It's necessary to test 
+all possible parameter request combinations in the API to test for problems pertaining to specific configurations.
+
+Call sequencing :
+------------------
+In many cases, API calls need to appear in a specific order to work correctly. This creates a sequencing challenge for the testing team. For example, 
+if a call to return a user's profile information goes through before the profile is created, the request will return an error.
+
+Output verification and validation:
+-----------------------------------
+Validating the datatype of every parameter used in the resource(request payload)
+Validating the response type with API design whether it is JSON .. validating JSON structure as well basically JSON SCHEMA VALIDATION or XML SCHEMA VALIDATION
+JSON Schema is used to validate the structure and data types of a piece of JSON, similar to XML Schema for XML.
+
+A major challenge is providing input values which are very difficult because GUI is not available.
+--------------------------------------------------------------------------------------------------
+
+Tracking System Integration:
+----------------------------
+The final challenge is making sure the API testing system is working correctly with the data tracking system. This is necessary to bring back correct responses 
+on whether a call is working correctly. It’s also used to passively monitor API performance. Since this step can come late in the process, the team may be too 
+fatigued to give it the attention it needs
+
+Test data management: 
+----------------------
+The numerous APIs with their various parameters require an enormous amount of data to test them effectively. Maintaining such a large amount of data and ensuring
+that the data is reusable is a big challenge for API testers. The diversity between the APIs and the limited access to the source platform further makes test 
+data management challenging. 
+
+c. API Testing:
+API (Application Programming Interface) testing is a type of software testing that aims to determine whether the APIs that are developed meet expectations
+ when it comes to functionality, performance, reliability and security for an application
+ The purpose of Reliability testing is to assure that the software product is bug free and reliable enough for its expected purpose.
+
+d. API:
+An API (Application Programming Interface) is a set of functions that allows applications to access data and interact with external software components, 
+operating systems, or microservices. To simplify, an API delivers a user response to a system and sends the system's response back to a user.
+
+How do I know if an API is working?
+
+2. Functional checks
+Monitor CRUD operations like POST / PUT / DELETE.
+Validate payloads using JSON Schema validation.
+Check payload data (using JSON Path or XPath)
+Identify latency by checking API response times.
+Check status codes that are not HTTP 200 OK to identify API transactions that should fail.
+
+API testing flow is quite simple with three main steps:
+
+Send the request with necessary input data.
+Get the response having output data.
+Verify that the response returned as expected in the requirement.
+
+Advantages of API testing:
+-------------------------
+1. API testing allows access to the application without a user interface. Testing the core, code-level functionality of the application provides an early 
+evaluation of its overall build strength before running GUI tests, exposing small errors before they become huge problems.
+
+2. Access Without UI
+A key advantage of API testing is having access to the application without a user interface or users to interact with the system. In other words, QA testers 
+can run API tests without needing to experience the software application. This is a great advantage because it provides QA engineers early insight into 
+defects and errors so that developers can resolve the issues before they impact the GUI.
+
+3.Test for Core Functionality
+Testing the code-level functionality of an application provides an early evaluation of its overall build strength before running GUI tests. This helps expose the small errors that can fester and become larger problems during GUI testing. Core access enables testing in tandem with development, fostering communication and improved collaboration between both teams. This is especially advantageous if you are performing your API testing with an offshore QA team.
+
+4. Time Effective
+One of the major differences between API and GUI testing is that API testing is far less time consuming than functional GUI testing. 
+GUI testing requires the polling of webpage elements, which can slow down the testing process immensely. And what is API testing known for best
+ but its speediness in delivering results!
+
+5. Language-Independent
+As previously mentioned, an API test exchanges data using XML or JSON. These transfer modes are completely language-independent, meaning that you can select 
+any core language when pursuing automated testing services for your application.
+
+6. Easy Integration With GUI
+With API testing, highly integrable tests are possible. This is especially beneficial if you plan to perform functional GUI tests following your API testing. 
+For example, easy integration would allow for the creation of new users within the application prior to the start of a GUI test.
+
+Limitations of API testing:
+--------------------------
+
+
+
+What is the difference between API and RESTful API?
+While API is basically a set of functions and procedures that allow one application to access the feature of other application, 
+REST is an architectural style for networked applications on the web. It is limited to client-server based applications. 
+REST is a set of rules or guidelines to build a web API.
+
+API response codes:
+
+
+What is authorization and authentication explain?
+Authentication means confirming your own identity, while authorization means granting access to the system. ... In simple terms, authentication is the process of
+verifying who you are, while authorization is the process of verifying what you have access to.
+
+response codes and description:
+--------------------------------
+1	1xx informational response
+2	2xx success
+3	3xx redirection
+4	4xx client errors
+5	5xx server errors
+
+1	1xx informational response:
+--------------------------------
+100 Continue : 
+Sending a large request body to a server after a request has been rejected for inappropriate headers would be inefficient.
+To have a server check the request's headers, a client must send Expect: 100-continue as a header in its initial request and receive a 
+100 Continue status code in response before sending the body.
+
+403 Forbidden 
+405 Method not allowed
+
+101 Switching protocals: Client requests server to do so
+102 Processing .. if server takes much time to process the request , then it sends this response to client so that it prevents the client from timing out 
+and assuming the request was lost.
+103 Early hints : Used to return some response headers before final HTTP message
+
+2 2xx success:
+---------------
+
+200 OK
+Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request, the response will contain an entity describing or containing the result of the action.[8]
+201 Created
+The request has been fulfilled, resulting in the creation of a new resource.[9]
+202 Accepted
+The request has been accepted for processing, but the processing has not been completed. The request might or might not be eventually acted upon, and may be disallowed when processing occurs
+
+3 3xx redirection
+--------
+
+304 Not Modified 
+
+
+4	4xx client errors
+----------------------
+400 Bad request
+401 Unauthorised
+402 Payment received (Banking/ digitalcash)
+403 Forbidden
+The request contained valid data and was understood by the server, but the server is refusing action. 
+This may be due to the user not having the necessary permissions for a resource or needing an account of some sort, 
+or attempting a prohibited action (e.g. creating a duplicate record where only one is allowed).
+404 Page not found /resource not found
+405 Method not allowed 
+A request method is not supported for the requested resource
+408 Request Timeout
+409 Conflict
+429 Too Many Requests
+
+5 5xx server errors
+---------------------
+500 Internal Server Error
+A generic error message, given when an unexpected condition was encountered and no more specific message is suitable
+501 Not Implemented
+The server either does not recognize the request method, or it lacks the ability to fulfil the request.
+502 Bad Gateway
+The server was acting as a gateway or proxy and received an invalid response from the upstream server.
+503 Service Unavailable
+The server cannot handle the request (because it is overloaded or down for maintenance). Generally, this is a temporary state.
+504 Gateway Timeout
+The server was acting as a gateway or proxy and did not receive a timely response from the upstream server.
+505 HTTP Version Not Supported
+The server does not support the HTTP protocol version used in the request.
+511 Network Authentication Required
+
+
+
+
+
+"PUT" puts a file or resource at a particular URI and exactly at that URI. If there is already a file or resource at that URI, PUT changes that file or resource. If there is no resource or file there, PUT makes one
+
+POST sends data to a particular URI and expects the resource at that URI to deal with the request. The web server at this point can decide what to do with the data in the context of specified resource
+
+PUT is idempotent meaning, invoking it any number of times will not have an impact on resources.
+
+However, POST is not idempotent, meaning if you invoke POST multiple times it keeps creating more resources
+
+
+SOAP:
+------
+SOAP is a protocol through which two computer communicates by sharing XML document
+SOAP permits only XML
+SOAP based reads cannot be cached
+SOAP is like custom desktop application, closely connected to the server
+SOAP is slower than REST
+It runs on HTTP but envelopes the message
+
+The SOAP (Simple Object Access Protocol) is defined as an XML-based protocol. It is known for designing and developing web services as well as enabling 
+communication between applications developed on different platforms using various programming languages over the Internet. 
+It is both platform and language independent.
+
+REST:
+------
+Rest is a service architecture and design for network-based software architectures
+REST supports many different data formats
+REST reads can be cached
+A REST client is more like a browser; it knows how to standardized methods and an application has to fit inside it
+REST is faster than SOAP
+It uses the HTTP headers to hold meta information
+
+architectural styles for creating a Web API:
+--------------------------------------------
+HTTP for client-server communication
+XML/JSON as formatting language
+Simple URI as the address for the services
+Stateless communication
+
+- What must be checked when performing API testing?
+Accuracy of data
+Schema validation
+HTTP status codes
+Data type, validations, order and completeness
+Authorization checks
+Implementation of response timeout
+Error codes in case API returns, and
+Non-functional testing like performance and security testing
+
+STATELESS and STATEFULL:
+------------------------
+In Stateless, server is not needed to keep the server information or session details to itself. 
+In stateful, a server is required to maintain the current state and session information. 
+In stateless, server and client are loosely coupled and can act independently. 
+In stateful, server and client are tightly bound.
+
+HTTP is called as a stateless protocol because each request is executed independently, without any knowledge of the requests that were executed before it, 
+which means once the transaction ends the connection between the browser and the server is also lost.
+
+
+What kinds of bugs that API testing would often find?
+-----------------------------------------------------
+Missing or duplicate functionality
+Fails to handle error conditions gracefully
+Stress
+Reliability
+Security
+Unused flags
+Not implemented errors
+Inconsistent error handling
+Performance
+Multi-threading issues
+Improper errors
+
+REST:
+XML and JSON are the most popular representations of resources.
+RESTful web services use the HTTP protocol as a medium of communication between the client and the server.
+REST architecture treats any content as a resource, which can be either text files, HTML pages, images, videos or dynamic business information.
+
+OPTIONS:
+----------
+The OPTIONS Method lists down all the operations of a web service supports. It creates read-only requests to the server
+
+
+But you can read the following facts before opting for any of the styles.
+
+Does the service expose data or business logic? 
+- REST is commonly used for exposing data while SOAP for logic.
+
+The requirement from clients or providers for a formal contract. 
+- SOAP can provide contract via WSDL.
+
+Support multiple data formats.
+- Go with REST
+
+Support for AJAX calls. REST can apply the XMLHttpRequest.
+
+Synchronous and asynchronous calls. 
+-SOAP enables both synchronous/ asynchronous operations whereas REST has built-in support for synchronous.
+
+Stateless or Stateful calls.
+ REST is suited for stateless operations.
+Security. SOAP provides a high level of security.
+Transaction support. SOAP is good at transaction management.
+Limited bandwidth. SOAP has a lot of overhead when sending/receiving packets since it’s XML based, requires a SOAP header. However, REST requires less bandwidth to send requests to the server. Its messages are mostly built using JSON.
+Ease of use. REST based application is easy to implement, test, and maintain.

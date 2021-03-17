@@ -1,0 +1,72 @@
+=================
+THBS System Admin
+=================
+> Putty
+> Open VPN
+> WinSCP
+> Microsoft office - Word and Excel
+> Microsoft Outlook
+> Skype
+> Microsoft Teams
+> Postman 
+> Soap UI 5.2.0
+> Eclipse IDE Mars.2 Release (4.5.2)
+> Java 8
+> MySQL work bench 6.0 (optional)
+
+=======================
+Selenium UI Automation
+=======================
+> Selenium Supporting jars and API's
+> TestNG to be installed in Eclipse
+> Cucumber supporting libraries
+> Excel supporting libraries
+
+====================
+Rest API Automation
+====================
+> Rest Assured Libraries
+
+=========================
+Client Side requirements:
+=========================
+AWS Profile creation
+Outlook User creation
+Slack User creation
+
+================
+Security Test :
+================
+Burp Suite Professional - https://portswigger.net/burp/pro
+Zap tool - https://en.wikipedia.org/wiki/OWASP_ZAP
+
+=======================
+Load/performance test :
+=======================
+Jmeter - apache-jmeter- Version 5.4
+https://jmeter.apache.org/ 
+https://jmeter.apache.org/download_jmeter.cgi
+
+blazemeter chrome extensions
+https://www.blazemeter.com/chrome-extensions
+
+=======================
+Mobile App Automation :
+=======================
+> Java 8, OpenJDK
+> Android Studio with AVD Manager 4.1.2
+> Node Js 12.19.0
+> Appium 1.18.3
+> Eclipse IDE Mars.2 Release (4.5.2)
+
+Below are links for license details.
+
+Andriod Studio ‐‐‐‐> https://source.android.com/setup/start/licenses ‐‐‐> Apache License 2.0
+Appium Server ‐‐‐‐> https://github.com/appium/appium/blob/master/LICENSE ‐‐‐ Apache License 2.0
+Node.js ‐‐‐‐> https://github.com/nodejs/node/blob/master/LICENSE ‐‐‐ MIT
+
+===========
+API Test :
+===========
+Postman Version 8.0.7
+Soap UI Version 5.2.0

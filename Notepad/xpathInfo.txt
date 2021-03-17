@@ -1,0 +1,68 @@
+xpath:
+---------
+//tagname[@attributename='attribute value']
+//*[@attributename='attribute value']
+//tagname[contains(@attributename,'attributevalue')]
+//tagname[text()='attributevalue']
+//tagname[.='attributevalue']
+//*[contains(@attributename,'attributevalue')]
+//*[contains(text(),'attributevalue')]
+//*[text()='attributevalue']
+//*[.='attributevalue']
+
+
+
+
+CSS:
+------
+[attributename='attributevalue']
+tagname[attributename='attributevalue']
+tagname[attributename*='attributevalue']
+tagname#id
+tagname.classname
+id --> css : #id
+class --> css : .classname
+
+Note: Any class with spaces .. Please replace with "."
+
+
+Parent to child: Absolute xpath
+exact child : relative xpath
+child to child under same parent (next):  <child_xpath>/following-sibling::tagname
+child to child under same parent (previous):  <child_xpath>/preceding-sibling::tagname
+Child to parent : <child_path>/parent::tagname
+
+
+Dropdowns:
+1. Static Dropdowns--- Select class
+2. Dynamic Dropdowns--- Index / Parent-Child relationship
+3. Autosuggestive Dropdowns-- Using keys function.
+
+
+
+1.Static dropdowns: Select class
+
+2. Dynamic dropdowns : 
+a. go with index approach : (may the xpath has more than one matching nodes)
+b. parent-child relationship xpath building
+
+Note:
+1. Parent child traverse mechanism
+2. Parent child relationship xpath to find the element uniquely**************
+
+3. Autosuggestive Dropdowns : Using Manual action achieved in Selenium scripts by "Keys"
+
+
+Radio Buttons:
+1 Static radio buttons: id, value, xpath
+2. Dynamic radio buttons : get(i), getAttribute() method
+
+Alert:
+-------
+Java Alerts which cant be located by findElemet #methods
+:
+We can perform following actions on java alert:
+1. Accept -- click on OK
+2.dismiss -- click on cancel
+3.getText() -- text of pop up
+4. sendKeys("") --- to input something

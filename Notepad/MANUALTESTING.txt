@@ -1,0 +1,451 @@
+DataTables:
+DataTables using Maps (Multiple Data under single scenario):
+Datadriven with Multiple data using Class Objects
+
+SMOKE TESTING: Critical Feature/Build is ready for testing or it is testable 
+SANITY TESTING: Specific feature basically after a defect fix
+REGRESSION TESTING: (modification, addition, bug fixing, or the deletion of any feature/functionality/module/flow)
+RE-TESTING: Specific feature basically after a defect fix
+ALPHA TESTING: acceptance testing by (Developer/tester) before giving to end user 
+BETA TESTING: acceptance testing by end users before releasing to prod
+Verification: we are developing the right product or (By Business Analyst , QA Team , Product owners , Seniors)
+Validation: we have developed the product right.(By Testers)
+EXPLORATORY: Exploring the application if the req is missing
+INTEGRATION TESTING: Data flow between modules within same application or data flow between two different systems.
+ENDURANCE TESTING/SOAK TESTING: system if it can withstand a huge load for a longer period of time
+VOLUME TESTING: Huge amount/volume of data on an Application
+EXHAUSTIVE TESTING: Testing with all possible data
+LOAD TESTING: response time is measured under varying load conditions (less than or equal to the desired load) 
+STRESS TESTINg : response time is measured under varying load conditions (greater than the desired load) 
+
+testing Techniques:
+-------------------
+In Equivalence Partitioning, first, you divide a set of test condition into a partition that can be considered.
+In Boundary Value Analysis you then test boundaries between equivalence partitions
+
+Decision Table:
+---------------
+Decision table testing is a software testing technique used to test system behavior for different input combinations. 
+This is a systematic approach where the different input combinations and their corresponding system behavior (Output) 
+are captured in a tabular form. That is why it is also called as a Cause-Effect table where Cause and effects are captured for better test coverage.
+
+Decision Table Testing is Important because it helps to test different combinations of conditions and provide better test coverage for complex business logic. 
+When testing the behavior of a large set of inputs where system behaviour differs with each set of input, decision table testing provides good coverage and 
+the representation is simple so it is easy to interpret and use.
+
+Advantages of Decision Table Testing:
+------------------------------------
+When the system behavior is different for different input and not same for a range of inputs, both equivalent partitioning, and boundary value analysis won't help, but decision table can be used.
+The representation is simple so that it can be easily interpreted and is used for development and business as well.
+This table will help to make effective combinations and can ensure a better coverage for testing
+Any complex business conditions can be easily turned into decision tables
+In a case we are going for 100% coverage typically when the input combinations are low, this technique can ensure the coverage.
+
+Disadvantages of Decision Table Testing:
+--------------------------------------
+The main disadvantage is that when the number of input increases the table will become more complex
+
+
+Verification: (STATIC TESTING)
+Verification testing includes different activities such as business requirements, system requirements, design review, 
+and code walkthrough while developing a product.
+It is also known as static testing, where we are ensuring that "we are developing the right product or not". 
+And it also checks that the developed application fulfilling all the requirements given by the client.
+
+Validation testing : (DYNAMIC TESTING)
+Validation testing is testing where tester performed functional and non-functional testing. Here functional testing includes Unit Testing (UT), 
+Integration Testing (IT) and System Testing (ST), and non-functional testing includes User acceptance testing (UAT).
+
+Validation testing is also known as dynamic testing, where we are ensuring that "we have developed the product right." 
+And it also checks that the software meets the business needs of the client.
+
+
+Static Testing/Verification Testing:
+----------------------------------
+Static testing is testing, which checks the application without executing the code. 
+It is a verification process. Some of the essential activities are done under static testing such as business requirement review, 
+design review, code walkthroughs, and the test documentation review.
+
+Static testing is performed in the white box testing phase, where the programmer checks every line of the code before handling over to the Test Engineer.
+
+Static testing can be done manually or with the help of tools to improve the quality of the application by finding the error at the early stage of development; 
+that why it is also called the verification process.
+
+The documents review, high and low-level design review, code walkthrough take place in the verification process.
+
+Dynamic Testing
+Dynamic testing is testing, which is done when the code is executed at the run time environment. 
+It is a validation process where functional testing [unit, integration, and system testing] and non-functional testing [user acceptance testing] are performed.
+
+We will perform the dynamic testing to check whether the application or software is working fine during and after the installation of the application without 
+any error.
+
+Critical Questions:
+Verification and Validation
+Static and Dynamic 
+Load and Stress 
+Sanity and Smoke
+
+Defect, Bug , Error and Failure:
+---------------------------------
+Defect: When the application is not working as per the requirement. - (Usually rasied during the system testing By Test Engineer )
+Bug: Informal way of naming a defect
+Error: Is something, the problem in coding leads to error
+Issue: When the application is not meeting the business requirement. (Usually raised during User Acceptance Testing by the Business Team)
+Failure: Lots of defect leads to failure of the software.
+
+Severity and Priority;
+-----------------------
+Severity
+The impact of the bug on the application is known as severity.
+It can be a blocker, critical, major, and minor for the bug.
+
+Blocker: if the severity of a bug is a blocker, which means we cannot proceed to the next module, and unnecessarily test engineer sits ideal.
+There are two types of blocker bug, which are as follows:
+A major feature is not working: Login to HDFC, amount transfer is not working
+The major flow is not working: Login and signup itself not working in HDFC application.
+
+Critical:
+If it is critical, that means the main functionality is not working, and the test engineer cannot continue testing.
+Major: if it is major, which means that the supporting components and modules are not working fine, but test engineer can continue the testing.
+Minor: if the severity of a bug is minor, which means that all the U.I problems are not working fine, but testing can be processed without interruption.
+
+Priority
+Priority is important for fixing the bug or which bug to be fixed first or how soon the bug should be fixed.
+It can be urgent, high, medium, and low.
+High: it is a major impact on the customer application, and it has to be fixed first.
+Medium: In this, the problem should be fixed before the release of the current version in development.
+Low: The flow should be fixed if there is time, but it can be deferred with the next release.
+
+The severity of a bug is derived based on the effect of that bug on the system. It indicates the level of threat that a bug can affect the system. 
+Severity is divided into levels, such as-
+LOW
+MINOR
+MAJOR
+CRITICAL/BLOCKER
+
+Priority is how quickly a bug should be fixed and eradicated from the website. Bug priority indicates the sense of urgency 
+for dealing with a bug on our website
+LOW
+MEDIUM
+HIGH
+IMMEDIATE
+
+Severity and Priority comparison:
+a. Bug Severity is the degree of impact that a defect has on the system; whereas, Bug Priority is the order of severity which has impacted the system.
+b. Severity is related to standards and functionality of the system; whereas, Priority is related to scheduling.
+c. Depending upon the impact of the bug, Bug Severity examines whether the impact is serious or not. On the other hand, Bug Priority examines whether the bug should be resolved soon or can be delayed.
+d. Bug Severity is operated by functionality. On the other hand, bug priority is operated by business value.
+e. In the case of bug severity, the level of severity is less likely to change. However, bug priority may differ.
+f. Bug severity is assessed from a technical perspective of the web-application workflow. On the other hand, bug priority is assessed from a user-experience perspective on web-application usage.
+
+
+High Severity and Priority is LOW:
+
+ If an application or web page crashes when a remote link is clicked, in this case clicking the remote link by an user is rare but the impact of  application 
+ crashing is severe. So the severity is high but priority is low.
+ 
+ LOW Severity and High Priority:
+ 
+ Client LOGO, Spelling errors in major modules , Introduction screens 
+ 
+
+
+SMOKE TESTING/Build Verification Testing
+
+Smoke Testing comes into the picture at the time of receiving build software from the development team. 
+The purpose of smoke testing is to determine whether the build software is testable or not. It is done at the time of "building software." This process is also known as "Day 0".
+
+It is a time-saving process. It reduces testing time because testing is done only when the key features of the 
+application are not working or if the key bugs are not fixed. The focus of Smoke Testing is on the workflow of the core and primary 
+functions of the application.
+
+Testing the basic & critical feature of an application before doing one round of deep, rigorous testing 
+(before checking all possible positive and negative values) is known as smoke testing.
+
+Why we do smoke testing?
+We will do the smoke testing to ensure that the product is testable.
+We will perform smoke testing in the beginning and detect the bugs in the basic features and send it to the development team so that the development team will have enough time to fix the bugs.
+We do smoke testing to make sure that the application is installed correctly.
+
+
+STATIC TESTING/VERIFICATION TESTING 
+
+
+REGRESSION TESING: (modification, addition, bug fixing, or the deletion of any feature/functionality/module/flow then, Regression testing is performed)
+
+Regression testing is a black box testing techniques. It is used to authenticate a code change in the software does not impact the existing functionality 
+of the product. 
+Regression testing is making sure that the product works fine with "new functionality, bug fixes, or any change in the existing feature".
+
+Regression testing is a type of software testing. Test cases are re-executed to check the previous functionality of the application is working fine, 
+and the new changes have not produced any bugs.
+
+Regression testing can be performed on a new build when there is a significant change in the original functionality. 
+It ensures that the code still works even when the changes are occurring. Regression means Re-test those parts of the application, which are unchanged.
+
+1. When new functionality added to the application.
+Example:
+A website has a login functionality which allows users to log in only with Email. Now providing a new feature to do login using Facebook.
+
+2. When there is a Change Requirement.
+Example:
+Remember password removed from the login page which is applicable previously.
+
+3. When the defect fixed
+Example:
+Assume login button is not working in a login page and a tester reports a bug stating that the login button is broken. Once the bug fixed by developers, tester tests it to make sure Login Button is working as per the expected result. Simultaneously, tester tests other functionality which is related to the login button.
+
+4. When there is a performance issue fix
+Example:
+Loading of a home page takes 5 seconds, reducing the load time to 2 seconds.
+
+5. When there is an environment change
+Example:
+When we update the database from MySql to Oracle.
+
+
+BUG LEAKAGE:
+------------
+A bug leakage results when a bug is detected by the end user/Client/Customer which should have been detected by the test engineer during System testing basically it valuates the
+ability of the qa engineer.
+
+BUG RELEASE:
+------------
+A bug release is when a particular version of software is released with a set of known bug/defect . Basically these bugs are low severity and/or low priority bugs.
+
+BUILD and RELEASE:
+-----------------
+BUILD is something from Dev to QA for testing
+RELEASE is something given to the end user/customer for use.
+
+ACCEPTANCE TESTING TYPES:
+--------------------------
+
+ALPHA TESTING :
+-------------
+Alpha testing is a type of acceptance testing, which is performed to identify all possible bugs/issues before releasing the product to the end-user.
+Alpha testing involves both white box and black-box techniques.
+
+BETA TESTING:
+-------------
+Beta Testing is a type of acceptance testing; it is the final test before shipping a product to the customers. Beta testing of a product is implemented by "real users "of the software application in a "real environment." 
+OPEN BETA: is for operational users for testing the app
+CLOSED BETA: is for the real time customers/users or PUBLIC
+Beta testing uses only black-box testing.
+
+EXPLORATORY TESTING:
+If requirement does not exist, then we do one round of exploratory testing.
+
+So, for this first, we will be exploring the application in all possible ways, understanding the flow of the application, preparing a test document and then testing the application, 
+this approach is known as exploratory testing.
+
+INTEGRATION TESTING:
+Once all the components or modules are working independently, then we need to check the data flow between the dependent modules is known as integration testing.
+Incremental Approach:
+----------------------
+Top-Down Approach
+=================
+The top-down testing strategy deals with the process in which higher level modules are tested with lower level modules until the successful 
+completion of testing of all the modules. Major design flaws can be detected and fixed early because critical modules tested first. 
+In this type of method, we will add the modules incrementally or one by one and check the data flow in the same order.
+
+Advantages:
+Identification of defect is difficult.
+An early prototype is possible.
+
+Disadvantages:
+Due to the high number of stubs, it gets quite complicated.
+Lower level modules are tested inadequately.
+Critical Modules are tested first so that fewer chances of defects.
+
+Bottom-Up Approach
+===================
+The bottom to up testing strategy deals with the process in which lower level modules are tested with higher level modules until the successful 
+completion of testing of all the modules. Top level critical modules are tested at last, so it may cause a defect. Or we can say that we will be 
+adding the modules from bottom to the top and check the data flow in the same order.
+
+Advantages
+Identification of defect is easy.
+Do not need to wait for the development of all the modules as it saves time.
+
+Disadvantages
+Critical modules are tested last due to which the defects can occur.
+There is no possibility of an early prototype.
+
+Hybrid Testing Method
+In this approach, both Top-Down and Bottom-Up approaches are combined for testing. In this process, top-level modules are tested with lower level modules 
+and lower level modules tested with high-level modules simultaneously. There is less possibility of occurrence of defect because each module interface is tested.
+
+Non-Incremental Approach:
+-------------------------
+BigBang Approach:
+In this approach, testing is done via integration of all modules at once. It is convenient for small software systems, if used for large software systems 
+identification of defects is difficult.
+Since this testing can be done after completion of all modules due to that testing team has less time for execution of this process so that internally 
+linked interfaces and high-risk critical modules can be missed easily.
+
+Advantages:
+It is convenient for small size software systems.
+
+Disadvantages:
+Identification of defects is difficult because finding the error where it came from is a problem, and we don't know the source of the bug.
+Small modules missed easily.
+Time provided for testing is very less.
+We may miss to test some of the interfaces.
+Defects present at the interfaces of components are identified at very late stage as all components are integrated in one shot.
+It is very difficult to isolate the defects found.
+There is high probability of missing some critical defects, which might pop up in the production environment.
+It is very difficult to cover all the cases for integration testing without missing even a single scenario.
+
+Compatability Testing:
+----------------------
+Compatibility testing is a non-functional testing conducted on the application to evaluate the application's compatibility within different environments. 
+It can be of two types - forward compatibility testing and backward compatibility testing.
+
+Operating system Compatibility Testing - Linux , Mac OS, Windows
+Database Compatibility Testing - Oracle SQL Server
+Browser Compatibility Testing - IE , Chrome, Firefox
+Other System Software - Web server, networking/ messaging tool, etc
+
+Endurance Testing/Soak testing:
+-------------------------------
+Endurance Testing also known as Soak Testing is performed to determine if the application under test can sustain the continuous loads.
+Endurance testing, non-functional testing involves examining the system if it can withstand a huge load for a longer period of time and 
+thereby measuring the system's reaction parameters.
+
+Volume Testing:
+---------------
+Volume testing is a Non-functional testing that is performed as part of performance testing where the software is subjected to a huge volume of data. 
+It is also referred as flood testing.
+Volume Testing - Checklist:
+Verify if there is any data loss.
+Check the system's response time.
+Verify if the data is stored incorrectly.
+Check if the data is overwritten without any notification.
+
+Exhaustive Testing:
+-------------------
+Exhaustive testing is a test approach in which all possible data combinations are used for testing. 
+Its a time consuming process where testing is performed with all possible data.
+
+LOAD TESTING:
+---------------
+Load testing is performance testing technique using which the response of the system is measured under various load conditions. 
+The load testing is performed for normal and peak load conditions.
+
+AGILE METHODOLOGY:
+------------------
+Agile is a development methodology based on iterative and incremental approach.
+Agile is a continuous iteration of development and testing in the software development process whereas Scrum is an Agile process to focus on delivering 
+the business value in the shortest time. Agile methodology delivers the software on a regular basis for feedback while Scrum delivers the software after 
+each sprint.
+
+Following are Agile principles:
+-Welcome changing requirements, even late in development. Agile processes allow change according to customer's competitive advantage.
+-Business people and developers will work daily throughout the project.
+-Attention to technical excellence and right design enhances agility
+-Agile team, work on to become more effective, for that they adjust its behavior according to the project.
+
+"""""""""Working software is the most elementary measure of progress in Agile""""""""""""
+
+Different Methodologies in AGILE:
+---------------------------------
+Scrum
+Kanban
+Feature driven Development
+Crystal Development
+Lean Software Development
+Dynamic System Development method
+Extreme Programming
+
+
+
+Scrum is the best Agile methodology for your specific needs and goals. Scrum is typically best suited to projects which do not have clear requirements, 
+are likely to experience change, and/or require frequent testing.
+
+SPRINT:
+A sprint is a short, time-boxed period when a scrum team works to complete a set amount of work. Sprints are at the very heart of scrum and agile methodologies, 
+and getting sprints right will help your agile team ship better software with fewer headaches.
+
+Acceptance Criteria:
+--------------------
+Definition of Done (DOD):
+As stated in Scrum Guides the Definition of Done (DoD) is –
+
+When a Product Backlog item or an Increment is described as “Done”, one must understand what 'Done' means.
+
+the "Definition of Ready" defines the criteria that a specific user story has to meet before being considered for estimation or inclusion into a sprint. 
+Whereas a Definition of Ready is focused on user story level characteristics, the Definition of Done is focused on the sprint or release level.
+
+
+Acceptance Criteria are the agreed upon measures to prove you've done them. Requirements are what the client / customer have asked for. 
+Acceptance Criteria, often expressed as tests, are used to illustrate Requirements and to indicate, 
+when the tests pass, that the Requirements have been met.
+
+PRODUCT BACKLOG and SPRINT BACKLOG:
+-----------------------------------
+A product backlog is a list of the new features, changes to existing features, bug fixes, infrastructure changes or other activities that a team may deliver 
+in order to achieve a specific outcome. The product backlog is the single authoritative source for things that a team works on.
+
+A sprint backlog is the set of items that a cross-functional product team selects from its product backlog to work on during the upcoming sprint. 
+Typically the team will agree on these items during its sprint planning session.
+
+The Sprint Backlog includes the Product Backlog items that the Development Team agreed to complete within the Sprint, the plan for doing this (including discovery work, tasks, improvements, etc.) 
+and at least one process improvement.
+
+How do you do a sprint backlog?
+An effective sprint backlog must contain all user stories the team needs to address during the sprint. The Scrum master and product owner must break down each item in the backlog into specific tasks and prioritized each task according 
+to the needs of the product owner.
+
+The sprint backlog is like a subset of the product backlog. The sprint backlog comes from the product backlog, but it contains only that item, or those items, that can be completed during each sprint. ... Unlike the product backlog, though, the sprint backlog is unchanged during the period of the sprint.
+
+Sprint review vs Sprint retrospective:
+-------------------------------------
+Sprint retrospective meeting takes place immediately after the sprint review. While sprint review is a discussion about what the team is building, 
+sprint retrospective is focused on how they’re building it.
+
+Sprint review is "What the team is building"
+Sprint Planning is "How the team is buiding the product"
+
+Sprint review : reviewing the sprint and list down the things which are done , updating the product backlog and planning the next Sprint date , validating with the
+acceptance criteria. During the Sprint Review, Sprint Backlog items delivered during the sprint are demonstrated and inspected.
+
+- Demonstration
+- Discussion With Business Stakeholders
+- Product Backlog Update
+
+
+Sprint retrospective :  This is for improving the development process
+- What went well
+- What could be improved
+-How can it be improved
+- how can we approach the next sprint with improved process
+- Sprint Retrospective is to plan ways to increase quality and effectiveness.
+
+BURN UP and BURN DOWN CHARTS:
+------------------------------
+Burn-up charts indicate the work that has been completed 
+Burn-down chart shows the amount of remaining work in a project.
+
+AGILE MANIFESTO:
+-----------------
+The Agile Manifesto consists of four key values: 
+Individuals and interactions over processes and tools. 
+Working software over comprehensive documentation. 
+Customer collaboration over contract negotiation
+Responding to Change Over Following a Plan.
+
+A competent agile tester must possess the following qualities:
+-----------------------------------------------------------------
+They should be capable of understanding the requirements quickly.
+An agile tester should be aware of all the agile principles and concepts and values as listed down in an agile manifesto.
+They should be able to prioritize the work based on the requirements.
+They should have excellent communication skills as continuous communication between business associates, developers and tester is a backbone of the agile development process.
+
+Principles of Agile testing:
+----------------------------
+Continous testing
+Continous Feedback
+Simple and Clean code
+Less Documentation

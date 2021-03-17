@@ -1,0 +1,583 @@
+{
+	"info": {
+		"_postman_id": "94368d19-2ee7-40ae-bca3-851b06a35055",
+		"name": "ScriptingDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "TokenAPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4629c19f-f9c1-48d2-a018-6736bef423e3",
+						"exec": [
+							"//String to JSON Conversion",
+							"console.log(responseBody);",
+							"var respbody= JSON.parse(responseBody);",
+							"",
+							"//accessing the token from the json response",
+							"var access_token=respbody.token;",
+							"console.log(access_token);",
+							"",
+							"// Setting the (accessToken) as environment variable  and passing it as an Authorisation header in all upcoming request",
+							"postman.setEnvironmentVariable('accessToken',access_token);",
+							"",
+							"tests[\"Checking for http status code 200\"]=responseCode.code===200;"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5ba22a7a-ea53-4907-9ff8-89fcd2feeee8",
+						"exec": [
+							"postman.setEnvironmentVariable('client_id','RA13223');",
+							"postman.setEnvironmentVariable('client_pwd','UkExMzIyMzMz');"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{     \"loginID\": \"{{client_id}}\",     \"password\": \"{{client_pwd}}\" }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/token",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegitrationAPI_001",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c588290d-f091-43e5-b861-60ef177902f0",
+						"exec": [
+							"//postman.setEnvironmentVariable('url','uat-ap-app-01.sg.bimamobile.internal:8080');",
+							"var urlvalue=postman.getEnvironmentVariable('url');",
+							"console.log(urlvalue);",
+							"",
+							"",
+							"//postman.setEnvironmentVariable('accessToken','eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSQTEzMjIzIiwiYXV0aG9yaXRpZXMiOiJHU0FfQVBQIiwiZXhwIjoxNTg3ODA4MzM3LCJpc3MiOiJpbi5taXAuand0In0.Mf1R57U-hgFCw6HoEUNHt1FLTxtbMqfgzy7xhHUENZZ2sv53drvbJOPLLl8HHg0vs0GtL3hovgZE5nEJrHyw7A');",
+							"",
+							"//postman.clearEnvironmentVariable('url');",
+							"//postman.cleatEnvironmentVariables();",
+							"//postman.clearGlobalVariables();"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "04625a35-656f-4679-8cae-820df39388c0",
+						"exec": [
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking reponse status code as 07\"]=responseBody.has(\"07\");",
+							"tests[\"Checking reponse status code as 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking the response status message as SUCCESS\"]=responseBody.has(\"Success\");",
+							"//tests[\"Checking reponse message as Customer already registered\"]=responseBody.has(\"Customer already registered for offer Id\");",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "ehhe",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"Anna New Edited\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"{{msisdn}}\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [ {\"offerId\" : 6,\"offerCoverId\" : 22,\"healthTipsSmsFrequency\" : 3,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 1,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob new\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"Jacob new\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/register-customer",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"register-customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegitrationAPI_002",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c588290d-f091-43e5-b861-60ef177902f0",
+						"exec": [
+							"//postman.setEnvironmentVariable('url','uat-ap-app-01.sg.bimamobile.internal:8080');",
+							"var urlvalue=postman.getEnvironmentVariable('url');",
+							"console.log(urlvalue);",
+							"",
+							"",
+							"//postman.setEnvironmentVariable('accessToken','eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSQTEzMjIzIiwiYXV0aG9yaXRpZXMiOiJHU0FfQVBQIiwiZXhwIjoxNTg3ODA4MzM3LCJpc3MiOiJpbi5taXAuand0In0.Mf1R57U-hgFCw6HoEUNHt1FLTxtbMqfgzy7xhHUENZZ2sv53drvbJOPLLl8HHg0vs0GtL3hovgZE5nEJrHyw7A');",
+							"",
+							"//postman.clearEnvironmentVariable('url');",
+							"//postman.cleatEnvironmentVariables();",
+							"//postman.clearGlobalVariables();"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "04625a35-656f-4679-8cae-820df39388c0",
+						"exec": [
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking reponse status code as 07\"]=responseBody.has(\"07\");",
+							"tests[\"Checking reponse status code as 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking the response status message as SUCCESS\"]=responseBody.has(\"Success\");",
+							"//tests[\"Checking reponse message as Customer already registered\"]=responseBody.has(\"Customer already registered for offer Id\");",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "Token",
+						"value": "ehhe",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"customer\" : {\"customerDetails\" : {\"customerName\" : \"Anna New Edited\",   \"customerAge\" : 35,\"customerGender\" : \"M\",\"customerMsisdn\" : \"{{msisdn}}\",\"createdBy\" : 13009,\"createdDate\" : \"2020-02-28 14:53:01\"},    \"customerSubscriptions\" : [{\"offerId\" : 5,\"offerCoverId\" : 11,\"healthTipsSmsFrequency\" : 3,\"healthTipsSmsLang\" : \"B\",\"documentTypeId\" : 1,\"documentValue\" : \"Ders2hu7geu\",\"paymentConfigurationId\" : 5,\"registeredChannelId\" : 5,\"paymentChannelId\" : 3,\"nomineeDetails\" : [ {\"name\" : \"Jacob new\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"},{\"name\" : \"Jacob new\",\"age\" : 50,\"msisdn\" : \"01898745632\",\"relationship\" : \"Father\",\"gender\" : \"M\"}]}]}}"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/register-customer",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"register-customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentDeactivationAPI_001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2d3a42d-67ba-4509-aa84-ea8224d175ff",
+						"exec": [
+							"//Adding Assertions",
+							"",
+							"//Checking the status code",
+							"",
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking for response status code: 17\"]=responseBody.has(\"17\");",
+							"//tests[\"Checking for response status message as 'Customer is already payment deactivated'\"]=responseBody.has(\"Customer is already payment deactivated\");",
+							"tests[\"Checking for response status code: 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking for response status message 'Customer deregitration Success'\"]=responseBody.has(\"Success\");",
+							"tests[\"checking for the response time\"]=responseTime<1000;",
+							"tests[\"checking for requtest HTTP Method\"]=request.method==='POST';"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 5,   \"offerCoverId\" : 11,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-03-22 14:53:01\" }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/deactivate",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"deactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentDeactivationAPI_002",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e2d3a42d-67ba-4509-aa84-ea8224d175ff",
+						"exec": [
+							"//Adding Assertions",
+							"",
+							"//Checking the status code",
+							"",
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking for response status code: 17\"]=responseBody.has(\"17\");",
+							"//tests[\"Checking for response status message as 'Customer is already payment deactivated'\"]=responseBody.has(\"Customer is already payment deactivated\");",
+							"tests[\"Checking for response status code: 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking for response status message 'Customer deregitration Success'\"]=responseBody.has(\"Success\");",
+							"tests[\"checking for the response time\"]=responseTime<1000;",
+							"tests[\"checking for requtest HTTP Method\"]=request.method==='POST';"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 6,   \"offerCoverId\" : 22,   \"deactivationMode\" : 1,   \"deactivatedBy\" : 13009,   \"deactivationDate\" : \"2020-03-22 14:53:01\" }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/deactivate",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"deactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentReactivationAPI_001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef4de502-e812-4ddb-8896-8abf5b31c881",
+						"exec": [
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking reponse status code as 19\"]=responseBody.has(\"19\");",
+							"//tests[\"Checking reponse message as Customer subscription is already active\"]=responseBody.has(\"Customer subscription is already active\");",
+							"tests[\"Checking reponse status code as 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking reponse message as Customer payment reactivated\"]=responseBody.has(\"Success\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 6,   \"offerCoverId\" : 22,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/reactivate-payment",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"reactivate-payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PaymentDeactivationAPI_002",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef4de502-e812-4ddb-8896-8abf5b31c881",
+						"exec": [
+							"//tests[\"Checking token is expired\"]=responseCode.code===401;",
+							"tests[\"Checking for response code\"]=responseCode.code===200;",
+							"//tests[\"Checking reponse status code as 19\"]=responseBody.has(\"19\");",
+							"//tests[\"Checking reponse message as Customer subscription is already active\"]=responseBody.has(\"Customer subscription is already active\");",
+							"tests[\"Checking reponse status code as 00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking reponse message as Customer payment reactivated\"]=responseBody.has(\"Success\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 5,   \"offerCoverId\" : 11,   \"reactivationDate\" : \"2020-02-28 14:53:01\",   \"reactivationBy\" : 13009 }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/reactivate-payment",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"reactivate-payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchAPI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7777bb00-0c84-4351-b012-6f855cb385ce",
+						"exec": [
+							"tests[\"Check for response status code: 00\"]=responseBody.has(\"00\");",
+							"tests[\"Check for Customer details successfully retrieved\"]=responseBody.has(\"Success\");",
+							"",
+							"console.log(responseBody);",
+							"var response_json=JSON.parse(responseBody);",
+							"",
+							"//Extracting individual key value pairs in response",
+							"var cusMsisdn=response_json.customer.customerDetails;",
+							"console.log(cusMsisdn);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					}
+				],
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/search/01857804220",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"search",
+						"01857804220"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCoverAPI_001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "777c44e4-a53d-42a8-a3d9-46ab3bdda10c",
+						"exec": [
+							"tests[\"Checking for http status code:200\"]=responseCode.code==200;",
+							"tests[\"Checking for response status code:00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking for response status message:Success\"]=responseBody.has(\"Success\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 5,   \"offerCoverId\" : 11,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-03-01\",   \"coverEndDate\" : \"2020-03-31\" }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/update-cover",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"update-cover"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCoverAPI_002",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "777c44e4-a53d-42a8-a3d9-46ab3bdda10c",
+						"exec": [
+							"tests[\"Checking for http status code:200\"]=responseCode.code==200;",
+							"tests[\"Checking for response status code:00\"]=responseBody.has(\"00\");",
+							"tests[\"Checking for response status message:Success\"]=responseBody.has(\"Success\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "{{accessToken}}"
+					},
+					{
+						"key": "Content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"customerMsisdn\" : \"{{msisdn}}\",   \"offerId\" : 6,   \"offerCoverId\" : 22,   \"createdDate\" : \"2020-02-28 13:45:11\",   \"paidAmount\" : \"523.00\",   \"lifeCoverAmount\" : \"13456.00\",   \"healthCoverAmount\" : \"1234.00\",   \"coverStartDate\" : \"2020-03-01\",   \"coverEndDate\" : \"2020-03-31\" }"
+				},
+				"url": {
+					"raw": "http://{{url}}/mip-sync/v1/update-cover",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"mip-sync",
+						"v1",
+						"update-cover"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

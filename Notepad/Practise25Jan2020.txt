@@ -1,0 +1,383 @@
+public class Registrationpage extends Base Class(
+
+
+@FindBy(xpat="//input[@id='name']")
+WebElement customername;
+
+
+
+public Registrationpage()
+{
+PageFactory.initElements(driver,this);
+}
+//action methods
+
+public void enterCustomerName(String name)
+{
+WebDriverWait wait= new WebDriverWait(driver,30);
+wait.until(ExpectedConditions(elemetToBeClickable(customername)).click();
+
+}
+
+
+)
+
+int n=121;
+int rem;
+int rev=0;
+
+while(n!=0)
+{
+rem=n%10;
+rev=rev*10+rem;
+n=n/10;
+}
+
+if(n==rev)
+{
+sysout("Palidrome")
+}
+else
+{
+sysout("Not Palidrome")
+}
+
+for(int i=1; i<=num ; i++)
+{
+sysout(i);
+}
+
+for(int i=num; i>=1 ; i--)
+{
+sysout(i)
+}
+
+for(int i=1; i<=num; i++)
+{
+if(i%2==0)
+{
+sysout(i);
+}
+}
+
+for(int i=1; i<=num; i++)
+{
+if(i%2==1)
+{
+sysout(i);
+}
+}
+
+x=57;
+y=78;
+temp=x; // x value assign to temp
+x=y; // y value assign to x
+y=temp; // temp value assign to y
+
+//factorial
+num=10;
+for(i=1;i<=num; i++)
+{
+ temp=fact*i;
+ fact=temp;
+}
+
+//tag[@Atrributename='Attributevalue' and/or @Atrributename='Attributevalue']
+tag[attributename='attributevalue']
+//tag[text()='']
+//tag[.,'']
+//tag[contains(text()='')]
+By.id("")
+By.linkText("")
+By.name("")
+By.partialLinkText("")
+By.className("")
+//a
+//select
+//img
+//table
+//input
+//tag[@Attributename='Attributevalue']/../tag
+//tag[@Attributename='Attributevalue']/following-sibling::tag
+//tag[@Attributename='Attributevalue']/precedding-sibling::tag
+//tag[@Attributename='Attributevalue']/ancestor:: tag
+
+// - Any child
+/.. - immediate parent
+/ - immediate child
+sibbling functions - between child
+ancestor tag - Any parent
+descendant tag - Any Child under same parent
+
+List<WebElement> links=driver.findElements(By.xpath("//a"))
+int count=links.size();
+for(int i=0; i<count ; i++)
+{
+ WebElement we=links.get(i);
+ String text=we.getText();
+ String url=we.getAttribute("href");
+ sysout(text);
+ sysout(url);
+}
+
+List<WebElement> path=driver.findElements(By.xpath("//img"));
+int count= path.size();
+for(int i=0; i<count ; i++)
+{
+    WebElement ele= path.get(i);
+	String value= ele.getAttribute("src");
+	sysout("value");
+}
+
+List<WebElement> links=driver.findElements(By.xpath("//a"))
+int count=links.size();
+for(int i=0; i<count ; i++)
+{
+   WebElement ele= links.get(i);
+Point p= ele.getLocation();
+int x=p.getX();
+int y=p.getY();
+
+
+List<WebElement> textbox=driver.findElements(By.xpath("//input");
+int count=textbox.size();
+for(int i=0;i<count;i++)
+{
+   WebElement ele=textbox.get(i);
+   ele.sendKeys("abc");
+   ele.sendKeys(Keys.CONTROL + "a");
+   ele.sendKeys(Keys.DELETE);
+}
+
+Select sel=new Select(WebElement ele);
+sel.selectByVisibleText("");
+sel.selectByIndex();
+sel.selectByValue("");
+List<WebElement> options=sel.getOptions();
+int count = options.size();
+for(int i=0; i<=count; i++)
+{
+sel.selectByIndex(i);
+}
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions();
+for(WebElement ele : options)
+{
+String textvalue= ele.getText();
+sysout("text of all dropdowns:"+ textvalue);
+}
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options=sel.getOptions();
+Total_options=options.size();
+
+sel.selectByIndex(1);
+sel.selectByValue("dog");
+List<WebElement> selectedoptions=sel.getAllSelectedOptions();
+Total_selected_options= selectedoptions.size();
+
+Total_deselected_options=Total_options-Total_selected_options;
+
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions();
+for (int i=0; i<options.size(); i++)
+{
+sel.selectByIndex(i);
+}
+deselectAll();
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions;
+int count= options.size();
+for(int i=count-1; i>=0 ; i--)
+{
+sel.selectByIndex(i);
+}
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions;
+int count= options.size();
+for(int i=0; i<count ; i=i+2)
+{
+sel.selectByIndex(i);
+}
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions();
+int count= options.size();
+for(int i=count-1 ; i>=0 ; i--)
+{
+String textvalue= options.get(i).getText();
+sysout(textValue);
+}
+
+Select sel=new Select(WebElement ele);
+List<WebElement> options= sel.getOptions();
+ArrayList<String> l=new ArrayList<String>();
+int count= options.size();
+for(int i=0; int <count ; i++)
+{
+String values= options.get(i).getText();
+l.add(values);
+}
+collections.sort(l);
+for(String str: l)
+{
+sysout("options in ascending order"+ str)
+}
+
+
+-- collections.sort(l, collections.reverseOrder());
+
+Frames:
+----------
+driver.switchTo().frame(); #Main frame
+driver.switchTo().frame(0); # child 1
+driver.switchTo().frame(1); # child 2
+driver.switchTo().frame("frame1")
+driver.switchTo().frame(WebElement ele);
+driver.switchTo().defaultContent();
+driver.switchTo().ParentFrame();
+
+To handle disabled elements and do perform action on it/Scrolling actions 
+-------------------------------------------------------------------------
+javascriptExecutor js=(javascriptExecutor) driver;
+js.executeScript("document.getElementById('').value('xyz')"); // Passing element in disabled ele
+js.executeScript("document.getElementById('').value('')"); // clear the disabled ele
+---- SCROLL DOWN ACTION -----
+js.executeScript("window.scrollBy(0,500)"); (1 time)
+for(int i=0; i<3 ; i++)
+{
+js.executeScript("window.scrollBy(0,500"); #3times
+}
+-------- SCROLL UP ACTION --------
+js.executeScript("window.scrollBy(0,-500)")
+
+--------- SCROLL RIGHT ACTION ------
+js.executeScript("window.scrollBy(500,0)")
+
+-------- SCROLL LEFT ACTION -----
+js.executeScript("window.scrollBy(-500,0)")
+
+For a particular position, moving the cursor ..
+
+javascriptExecutor js=(javascriptExecutor) driver;
+Point loc= ele.getLoction();
+int x = loc.getX();
+int y= loc.getY
+js.executeScript("window.scrollBy("+x+","+y+");
+
+To perform:
+a. mouseoveraction
+b. RightClick
+c. draganddrop 
+d. doubleclick
+
+Action act=new Action(driver);
+act.moveToElement(WebElement ele).perform();
+act.dragAndDrop(WebElement ele1 , WebElement ele2).perform();
+act.doubleClick(WebElement ele1).perform();
+act.contextClick(WebElement ele1).perform();
+
+
+TakeScreenShot ts=(TakeScreenShot) driver;
+File src=ts.getScreenShotAs(OutputType.FILE);
+File des = new File("C://screenshots");
+FileUtils.copyFile(src,des);
+
+driver.manage().timeouts().implicitlyWait(10,timeUnit.SECONDS);
+driver.manage().window().maximize();
+
+
+String str="Education";
+for(int i=str.length()-1; i>=0 ; i--)
+{
+ result=result+str.charAt(i);
+}
+Sysout("The resultant string"+ result)
+
+
+n=124565
+number of times 5 is present in the number?
+
+int count=0;
+while(n!=0)
+{
+rem=n%10;//get the last one digit from the number
+if(rem==5)
+{
+count ++
+}
+n=n/10; // reduce the number by one digit
+}
+
+number of times 65 present in the given number??
+
+int n=1654565
+
+rem=n%100;
+if(rem==65)
+{
+count ++;
+}
+n=n/10;
+
+
+rev=0;
+while(n!=0)
+{
+rem=n%10;
+rev=rev*10+rem;
+n=n/10;
+}
+
+int sum=0;
+int[] arr= {1,2,3,4,5,6,6,7}
+for(int i=0; i< arr.length; i++)
+{
+sum=sum+arr[i];
+}
+sysout("the sum of the elements"+ sum);
+sysout("the average of elements"+ sum/arr.length());
+
+
+int[] arr= {1,2,3,4,5,6,6,7}
+max=arr[0];
+for(int i=0; i< arr.length; i++)
+{
+if(ar[i]> max)
+{
+max=ar[i];
+}
+}
+sysout("The max element in the array"+ max);
+
+
+int[] arr= {1,2,3,4,5,8,8}
+min=arr[0];
+for(int i=0; i< arr.length; i++)
+{
+if(arr[i]<min)
+{
+min=arr[i];
+}
+}
+sysout("The min element in the array"+ min);
+
+int[] arr= {1,2,3,4,5,4,9}
+int find=4;
+for(int i=0; i<str.length; i++)
+{
+if(find==arr[i])
+{
+sysout("The number 4 is present")
+}
+} 
+
+
+
+
+
+

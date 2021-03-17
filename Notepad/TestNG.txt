@@ -1,0 +1,97 @@
+TestNG:
+
+In TestNG , need not to have an main class to execute the script
+We use @Test annotation to run the test cases
+
+@Test followed by the method is considered as a test case
+
+Importance of TestNG.xml file:
+-----------------------------
+It helps us to run all test cases under a particular suite in a single click
+
+In xml file:
+Test suite: Header/ Suite level
+Test : modules
+classes : class level
+method : particular test case/ particular method
+
+<suite name="">
+    <test name="">
+       <classes>
+           <class name=""/>
+              <methods>
+                 <exclude/inculde name=""/>
+              </methods>
+           </class>
+       </classes>
+    </test>
+</suite>
+
+Remember :
+In testNG xml file,
+All tests/modules are mentioned under Test suite
+All Classes/tests cases are mentioned under Tests/modules
+All testcases/methods are mentioned under Testcases/tests
+
+
+BeforeSuite/AfterSuite : Scope: xml file level
+BeforeTest/AfterTest  : scope: Test folder level
+BeforeClass/AfterClass : scope : class level
+BeforeMethod/AfterMethod : scope : method level
+
+In the xml file
+@BeforeSuite and @AfterSuite will be executed in the suite level and it is for entire xml file
+@BeforeTest and @AfterTest will always have scope within the particular test/ "package level" as per the Project creation
+@BeforeClass and @AfterClass will always have scope within the particulat class/ "class level" as per the project creation
+@BeforeMethod and @AfterMethod will always have scope within the particular method in the class / "method level" inside the class 
+
+
+
+
+
+
+@BeforeSuite
+@BeforeTest
+@BeforeMethod
+@Test1
+@AfterMethod
+@AfterTest
+@BeforeMethod
+@Test2
+@AfterMethod
+@AfterTest
+@AfterSuite
+
+
+TestNG Extent Reports:
+----------------------
+Extent Report Community: (for sample code)
+------------------------
+Maven dependency for ExtentReports from Maven Repository and add to pom.xml file
+
+Basic Example:
+ ---------------
+// start reporters
+ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extent.html");
+    
+// create ExtentReports and attach reporter(s)
+ExtentReports extent = new ExtentReports();
+extent.attachReporter(htmlReporter);
+
+// creates a toggle for the given test, adds all log events under it    
+ExtentTest test = extent.createTest("MyFirstTest", "Sample description");
+
+For every test case, new test reference is created
+
+Note: extent.flush() is very important
+
+Extent Reports with TestNG:
+---------------------------
+
+
+
+
+
+
+
+

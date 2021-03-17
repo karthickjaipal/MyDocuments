@@ -1,0 +1,106 @@
+OPEN VPN:
+---------
+OpenVPN is open-source commercial software that implements virtual private network (VPN) techniques to create secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities. It uses a custom security protocol that utilizes SSL/TLS for key exchange.
+
+*****************************************************************************************************************************************************************
+
+ALL webservices are API's but all API's are not webservices
+Web service facilitates interaction between two machines over a network 
+An API acts as an interface between two different applications so that they can communicate with each other and API's need not be deployed in servers
+
+Transport Layer Security (TLS), 
+Secure Sockets Layer (SSL),
+
+HTTP with s(Secure) are SSL certified where it transmits data in an encrypted way between server and client(Browser)
+HTTP with not s(Secure) are not SSL certified where it transmits data in an text form between server and client(Browser) and it is not secured.
+
+JWT Json Web Token
+------------------
+
+AUTHENTICATION AND AUTHORISATION:
+---------------------------------
+
+What is the relationship between authentication and authorization?
+In simple terms, authentication is the process of verifying who a user is, while authorization is the process of verifying what they have access to. Comparing these processes to a real-world example, when you go through security in an airport, you show your ID to authenticate your identity.
+
+Authentication: Verifying valid user or not to access application/Service/Server
+Authorization means specifying which actions valid users can take on which resources, and in doing so, Authorization goes beyond the “authentication-only”
+
+Authorization and authentication are both vital but different elements of access management. Validating credentials is necessary but not sufficient in today’s complex business environment. Fortunately, there are a number of excellent Authorization solutions.
+
+Proxy Servers in Computer Network:
+---------------------------------
+Network Security: Proxy server hides the real IP Address of users in the network
+Network Performace Improvement : Request to Internet servers are stored as Cache in Proxy server later which can served for users in the same network if needed
+Monitoring users in Network : With the help of proxy server, Network administrator can monitor users in particular network by blocking them accessing restricted sites and consumption of network bandwidth.
+Block Website from accessed by Users in particular network
+Access Control
+Network Administrators can provide access to specific users on accessing specific site with the help of access control feature in Proxy servers.
+
+
+Proxy : It hides the real IP address of user who access over internet
+Virtual Private Network : It encrypts Data that you send o network
+DNS-Domain Name System: Names given for IP Address and it is registered
+
+When a domain name is searched in browser say "yahoo.com" , It first search in the Browser cache for IP Address later passes to ISP
+Involved in the Process of DNS Search:
+Internet Service Provider(Resolving Name Servers) : Resolve names to numbers(domain names to IP Address)--> Root Name Servers(will direct the resolver server to which TLD Servers should refer for) --> TopLevelDomain Name Servers(Redirect to respective Authoritative name servers) {.com,.net,.org and so on} --> Authoritative name servers(Responsible for knowing everything about the domain)
+
+Rest Principles:
+Client         ----->  Servers(Where the services are deployed under port)
+1. Web App
+2. Mobile App
+3. Browser
+Follow HTTP Protocal: use VERBS : "POST","PUT","DELETE","GET","PATCH"
+Server Side Developers should follow HTTP Standard and Protocal in creating VERBS to do action on resources.
+POST and PUT difference:
+------------------------
+POST:
+* Can create new resource
+* Cannot update the resource
+* It is non Idempotent ( means the request URL and response URL are different and ID generation control is at Server side)
+Client ---> /v1/customer      ---> Server
+Client <--- /v1/customer/1001 <--- Server
+* POST request is always a "collection type".
+
+PUT:
+* can create and update the resource
+* It is Idempotent ( means the request URL and response URL are same and ID generation control is at Client side)
+Client ---> /v1/customer/1001 ---> Server
+Client <--- /v1/customer/1001 <--- Server
+ 
+PUT and PATCH:
+---------------
+PUT is for full update
+PATCH is for Customized updates
+
+
+
+
+
+
+Json Data types and Structures:
+-------------------------------
+Json Syntax:
+name and value pair consists of field "name"/"key"(in double quotes) followed by colon followed by
+value(in double quotes)
+{"name" : "value"}
+
+Data's are separated by commas
+{"key/name": "value"}
+For a key in an JSON request, the datatypes of values can be following:
+1. String represented by ""
+2. Numbers represented by integer value
+3. ArrayOFStrings represented by ["String1","String2","String3"]
+4. ArrayOFNumbers represented by ["num1","num2","num3"]
+5. Boolean represented by true/false
+6. ArrayOFJsonObjects represented by [{jsonobject1},{jsonobject2},{jsonobject3}]
+7. Arrays and represented by [] square brackets
+8. null (Empty)
+9. Objecy(JsonObjects) represented within {}
+
+Json File should be always saved with .json(extension)
+MIME type for Json text : "application/json"
+
+
+

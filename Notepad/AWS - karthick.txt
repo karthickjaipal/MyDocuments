@@ -1,0 +1,265 @@
+AWS:
+----
+CIT - Instance details:
+Host IP :13.228.127.243
+
+To restart tomcat:
+sudo /etc/init.d/tomcat7 restart
+
+Bastion IP = 13.228.127.243
+ 
+Jenkins:
+Deployment URL for CIT:
+http://10.127.212.149:8080/
+qa.team
+milvik123!
+
+*Servers* :
+
+1)app-- application Server
+2)esb-- DB scripts/Batch scripts/ Deduction Scheduler and its respective properties. files
+3)rds-- MYSQL Database
+
+*login*:
+Username: karthick.jaipal	
+Passphrase: Thbs123!
+
+*To check for the id_rsa file in ssh folder*::
+
+Landing Server:
+cd .ssh
+ls -ltra
+
+**Application Instance**
+APP: lk-app-01.sg.bimamobile.internal
+ssh karthick.jaipal@lk-app-01.sg.bimamobile.internal
+
+** ESB Instance **
+ESB: lk-esb-01.sg.bimamobile.internal
+ssh karthick.jaipal@lk-esb-01.sg.bimamobile.internal 
+
+**Db server**
+MYSQL rds wrt mipadmin user:
+mysql -h lk-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pdDVYnR4TkxbDE2zL8rE5yLAL
+
+QA server: ap-qa-01.sg.bimamobile.internal
+ssh karthick.jaipal@ap-qa-01.sg.bimamobile.internal
+
+
+To run a mock in ap qa server:
+------------------------------
+./mockservicerunner.sh /home/karthick.jaipal/Soap_project/Soap_BD/sag-subscribe-service-1-0-soapui-project_bdSoapnew.xml
+
+Steps:
+Username and Password
+Switch from Term/Landing Server to App server: ssh Username@app_instance
+
+*switch to bimaapp User*:
+sudo su - bimaapp
+
+Tomcat servers:
+cd /var/lib/tomcat6/webapps
+War files and their backups
+
+In app server:
+*Log path*
+cd /var/log/mip/lk/da 
+
+*applications path*
+cd /opt/apps
+Application related  Schedulers
+
+*properties files*
+cd /etc/bima/properties/mip/lk/da
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Bangladesh - BD:
+-------------------
+Landing Server/term server:
+
+Application instance:
+----------------------
+bd app instance:    ssh karthick.jaipal@bd-app-01.sg.bimamobile.internal
+
+DB instance:
+--------------
+Live db instance:   mysql -h bd-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pdDVYnR4TkxbDE2zL8rE5yLAL
+
+Scheduler jar files runned in LIVE:
+-----------------------------------
+cd opt/apps/
+
+Application war files runned in LIVE:
+--------------------------------------
+/var/lib/tomcat6/webapps
+
+Application and Scheduler log path in LIVE:
+-------------------------------------------
+/var/log/mip/bd/rb/
+For UAT: /var/log/mip/bd/rb/UAT
+/var/log/mip/bd/rb/cronjobs
+
+Properties file path in lIVE:
+-------------------------------
+/etc/bima/properties/mip/bd/rb/
+For UAT: /etc/bima/properties/mip/bd/rb/UAT
+
+ESB instance:
+--------------
+bd esb instane:    ssh karthick.jaipal@bd-esb-01.sg.bimamobile.internal
+
+ESB DB scripts path:
+-----------------------
+/opt/scripts
+
+Logs path for the same:
+----------------------------
+ /var/log/mip/bd/rb/cronjobs/DbUpdates
+ 
+ESB SDP war path:
+-------------------------
+ /var/lib/tomcat6/webapps
+ 
+SDP Log path:
+-----------------------
+ /var/log/mip/bd/rb/SDP
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+UAT Application instance:
+----------------------
+uat app instance:  ssh karthick.jaipal@uat-ap-app-01.sg.bimamobile.internal
+                                       --NOT IN USE--
+UAT DB instance:
+--------------
+uat db instance:   mysql -h uat-ap-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pTG47g7NyeabzzyXnXDAw
+
+
+mysql -h uat-ap-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pTG47g7NyeabzzyXnXDAw mip_bd_rb < /home/karthick.jaipal/StoredProcedures/SP8.sql
+ mysql -h lk-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pdDVYnR4TkxbDE2zL8rE5yLAL mip < /home/karthick.jaipal/StoredProcedures/
+
+Test application war files runned in LIVE:
+--------------------------------------
+/var/lib/tomcat6/webapps
+
+Test application log path in LIVE:
+-------------------------------------------
+For UAT: /var/log/mip/bd/rb/UAT
+/var/log/mip/bd/rb/cronjobs
+
+Properties file path in lIVE:
+-------------------------------
+For UAT: /etc/bima/properties/mip/bd/rb/UAT
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+CIT Application instance:
+--------------------------
+cit app instance:  ssh karthick.jaipal@cit-ap-app-01.sg.bimamobile.internal
+
+sudo su - bimaapp
+
+CIT DB instance:
+--------------
+cit db instance:   mysql -h cit-ap-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pTG47g7NyeabzzyXnXDAw 
+
+Stored Procedures:
+-----------------
+Show procedure status where db= Database() and type='Procedure';
+Show function status where db= Database() and type='function';
+
+show create procedure <Procedure name>
+
+mysql -h cit-ap-rds-01.sg.bimamobile.internal -P 3306 -u mipadmin -pTG47g7NyeabzzyXnXDAw mip_bd_rb < /home/karthick.jaipal/StoredProcedures/SP8.sql
+ 
+ 
+ 
+ for Bima services:
+ ------------------
+ curl -H "Content-Type: text/xml; charset=utf-8" -H "SOAPAction;" -d @/home/bimaapp/deactivationrequest.xml -X POST http://localhost:8080/BIMA/services/genProvSOAP
+ curl -H "Content-Type: text/xml; charset=utf-8" -H "SOAPAction;" -d @/home/bimaapp/lk/activationrequest.xml -X POST http://localhost:8080/BIMA/services/genProvSOAP
+ 
+ 
+Application log path:
+----------------------
+/var/log/mip/bd/rb
+
+War file path:
+--------------
+/var/lib/tomcat7/webapps
+
+Properties file path in lIVE:
+-------------------------------
+/etc/bima/properties/mip/bd/rb/
+: ApplicationConfig.properties
+
+
+Undeploy command:
+
+UAT:
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@uat-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/coaching-service-1.0" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/CoachingService" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@uat-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/GenieDashboard" -O - -q
+
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@uat-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIPLK" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@lk-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIPLKUAT" -O - -q
+
+CIT:
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/coaching-service-1.0" -O - -q
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/coaching-service-bd-1.0" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/SMSService" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/SDPListener" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/mip-services-bd" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/USPBD" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIPBD" -O - -q
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIPKH" -O - -q
+
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIPLK" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/USPLK" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/BIMA" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/mip-services-lk" -O - -q
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/mip-services-kh" -O - -q
+
+deploy command from /var/temp folder:
+--------------------------------------
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/deploy?path=/MIPBD&war=file:/var/tmp/MIPBD.war" -O - -q
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/deploy?path=/MIPKH&war=file:/home/apporva.k/MIPKH.war" -O - -q
+
+wget "http://admin:cGMkXBX4bG88sJUHnnNHUqX3uy9JRWwhjb76aRDQ@cit-ap-app-01.sg.bimamobile.internal:8080/manager/text/undeploy?path=/MIP" -O - -q
+
+
+
+*******************SDP Mock Setup******************************
+cit_app_instance:
+/home/bimaapp/BD_SDP
+
+curl -H "Content-Type: text/xml; charset=utf-8" -H "SOAPAction;" -d @/home/bimaapp/BD_SDP/SDPupdatetype1request.xml -X POST http://localhost:8080/BIMA/services/DataSync
+
+
+
+Powershell command:
+--------------------
+
+Get-Content 'D:\SN\DBDump_2018_11_21\DBDump_2018_11_21.sql' | ForEach-Object { $_ -replace "mip", "mipsen18" } | Set-Content 'D:\SN\Destination\Dump2018_11_21.sql'
+
+
+OPS:
+
+ssh karthick.jaipal@ap-ops-01.sg.bimamobile.internal
+
+ insert into admin_config values(20, 'coaching_prgm_unsubscription_url','http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/unsubscribe-coaching-programme');
+
+ http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/subscribe-coaching-programme   |
+| 20 | coaching_prgm_unsubscription_url | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/unsubscribe-coaching-programme |
+| 21 | coaching_prgm_update_url         | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/update-coaching-subscription   |
+| 22 | coaching_prgm_coachingid_url     | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/get-coaching-id                |
+| 23 | coaching_prgm_template_url       | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/cpsmsTemplateUpload            |
+| 24 | coaching_prgm_confirmation_url   | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/cpsmsTemplateUpload            |
+| 25 | coaching_prgm_firstsms_url       | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/send-first-sms                 |
+| 26 | coching_prgm_smsservice_url      | http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-1.0-bd/send-first-sms
+
+http://cit-ap-app-01.sg.bimamobile.internal:8080/mip-services-bd/RegisterCustomer  

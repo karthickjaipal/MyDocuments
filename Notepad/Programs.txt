@@ -1,0 +1,1265 @@
+package assessments;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class SearchForNumberInString {
+
+	public static void main(String[] args)
+	{
+		int n=18565;
+		int count=0;
+		while(n!=0)
+		{
+			int rem=n%10; //get the last one digit out for comparison
+			if(rem==5)
+			{
+				count++;
+			}
+			n=n/10; // reduce the number by one digit
+		}
+		System.out.println("The number of times present :"+ count);
+		
+		int n1=16565;
+		int count1=0;
+		while(n1!=0)
+		{
+			int rem=n1%100; //get the last two digit out for comparison
+			if(rem==65)
+			{
+				count1++;
+			}
+			n1=n1/10; // reduce the number by one digit
+		}
+		System.out.println("The number of times present :"+ count1);
+		
+		String s1="124544";
+		int find=45;
+		int number=Integer.parseInt(s1);
+		//System.out.println(num);
+		while(number!=0)
+		{
+			int rem=number%100;
+			if(rem==find)
+			{
+				System.out.println("The number "+find+" is present");
+				break;
+			}
+			number=number/10;
+		}
+		
+		String[] arr={"12","122"};
+		for(String a:arr)
+		{
+			if(a.equals("12"))
+			{
+				System.out.println("element is present");
+			}
+		}
+		
+		Integer[] arr1={11,122};
+		for(Integer a:arr1)
+		{
+			if(a==12)
+			{
+				System.out.println("element is present");
+			}
+			else
+			{
+				System.out.println("element not present");
+			}
+		}
+		
+		
+		
+		String[] arr2={"12","122"};
+		int givenNumber=12;
+		List<String> list = Arrays.asList(arr2);
+		for(int i=0;i<list.size();i++)
+		{
+			if(list.get(i).equals(givenNumber))
+			{
+				System.out.println("The element is present");
+			}
+		}
+		
+		
+		/*for(String a:arr)
+		{
+			if(a.equals("12"))
+			{
+				System.out.println("element is present");
+			}
+		}*/
+		
+		
+		
+		
+		
+		
+		
+	}
+}
+
+===========================================
+package assessments;
+
+public class ReverseOfString {
+
+	public static void main(String[] args)
+	{
+		String s="Education";
+		String result="";
+		for(int i=s.length()-1;i>=0;i--)
+		{
+			result=result+s.charAt(i);
+		}
+		System.out.println("The reverse of String: "+result);
+	}
+}
+=============================================
+package assessments;
+
+public class StrongNumber {
+
+	public static void main(String[] args)
+	{
+		/*
+		 * 145
+		 * 5!= 120 + 4!=24 + 1!=1 
+		 * 5!+4!+1!=145
+		 * 145==145 True
+		 */
+		int inputnum=534;
+		int temp=inputnum;
+		int c=0;
+		while(temp!=0)
+		{
+		int rem=temp%10; //5
+		int n=rem;
+		int fact=1;
+		for(int i=n;i>1;i--)
+		{
+			fact=fact*i;
+		}
+		System.out.println("The factorial "+ n +"is"+fact);
+		
+		c=c+fact;
+		System.out.println(c);
+		temp=temp/10;
+		}
+		
+		if(c==inputnum)
+		{
+			System.out.println("It is Strong Number");
+		}
+		else
+		{
+			System.out.println("It is not Strong Number");
+		}
+		
+		}
+}
+==================================================
+package numberprograms;
+
+public class Program1 {
+	
+	/*
+	 * Program to find palindrome or not
+	 */
+
+	public static void main(String[] args)
+	{
+		int n=1551;
+		int temp=n;
+		int rev=0;
+		int rem;
+		System.out.println("The given number :"+n);
+		while(temp!=0)
+		{
+			rem=temp%10;
+			rev= rev*10+ rem;
+			temp=temp/10;
+		}
+        
+		System.out.println("The reverse number :"+ rev);
+		
+		if(n == rev)
+		{
+			System.out.println("Palindrome");
+		}
+		else
+		{
+			System.out.println("Not Palindrome");
+		}
+		
+	}
+
+}
+====================================================
+package numberprograms;
+
+public class program2 {
+
+	public static void main(String[] args) {
+		int n=95959;
+		//case 1:
+		int temp=n;
+		int find=4;
+		int rem;
+		int count=0;
+		/*
+		 * Number of times , particular digit present
+		 */
+		while(temp!=0)
+		{
+			rem=temp%10;
+			if(rem == 4)
+			{
+				count++;
+			}
+			temp=temp/10;
+		}
+		System.out.println("The number of times "+find+ " present is: "+count);
+	
+	
+	//case 2:
+	int num=95;
+	int counts=0;
+	while(n!=0)
+	{
+	rem=n%100;
+	if(rem == num)
+	{
+		counts++;
+	}
+	n=n/10;
+	}
+	System.out.println("The number of times "+num+ " present is: "+counts);
+	
+	
+	}
+}
+================================================
+package numberprograms;
+
+public class Program3 {
+
+	public static void main(String[] args) {
+		int n=100;
+		System.out.println("The numbers are:");
+		for(int i=0; i<=n ; i++)
+		{
+			System.out.println(i);
+		}
+		System.out.println("The even numbers are:");
+		int i=1;
+		while(i<=n) //1<=100
+		{
+			if(i%2 == 0)
+			{
+				System.out.println(i);
+			}
+			i++;
+		}
+		System.out.println("The odd numbers are:");
+		int j=1;
+		while(j<=n)
+		{
+			if(j%2 != 0)
+			{
+				System.out.println(j);
+			}
+			j++;
+		}
+	}
+
+}
+======================================================
+package numberprograms;
+
+public class Program4 {
+	public static void main(String [] args)
+	{
+		int[] arr ={13,-42,56,67,78,89};
+		int sum=0;
+		int max,min;
+		
+		for(int i=0 ;i <arr.length;i++)
+		{
+			sum=sum+arr[i];
+		}
+		System.out.println("the sum is :"+sum);
+		
+		max=min=arr[0];
+		
+		for(int i=0; i<arr.length;i++)
+		{
+			if(min>arr[i])
+			{
+				min=arr[i];
+			}
+		}
+		System.out.println("the smallest number is :"+min);
+		
+		for(int i=0;i<arr.length;i++)
+		{
+			if(max<arr[i])
+			{
+				max=arr[i];
+			}
+		}
+		System.out.println("the Largest number is :"+max);
+		int find=67;
+		int count=0;
+		for(int i=0; i<arr.length; i++)
+		{
+			if(arr[i]==find)
+			{
+				count++;
+				System.out.println("number of times "+ find + " exists : "+ count);
+			}
+		}
+		
+		int[] arr1 = new int[arr.length];
+		for(int i=arr.length-1; i>=0; i--)
+		{
+			arr1[i]=arr[i];
+		}
+		System.out.println("Copied Array in regular order");
+		
+		for(int i=0; i<arr.length; i++)
+		{
+			System.out.print(arr[i]+ " ");
+		}
+		System.out.println();
+		
+		System.out.println("Copied Array in reverse order");
+		for(int i=arr1.length-1; i>=0; i--)
+		{
+			System.out.print(arr1[i]+ " ");
+		}
+		
+	}
+
+}
+====================================================
+package numberprograms;
+
+public class Program5 {
+
+	public static void main(String[] args)
+	{
+		int n=8;
+		int total;
+		int a[] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+		total = (n + 1) * (n + 2) / 2;  
+		System.out.println(total);
+		for (int i = 0; i < n; i++)
+		{
+			total= total- a[i];
+		}
+		System.out.println(total);
+	}
+
+
+
+}
+========================================
+package assessments;
+
+public class AmstrongNumber {
+
+	public static void main(String[] args)
+	{
+		int num=153;
+		int temp=num;
+		int c=0;
+		/*
+		 * The number is 153
+		 * 1*1*1=1
+		 * 5*5*5=125
+		 * 3*3*3=27
+		 * sum=153
+		 * After Amstrong series: 153
+		 */
+		while(num!=0)
+		{
+			int rem=num%10;
+			c=c+(rem*rem*rem);
+			System.out.println(c);
+			num=num/10;
+		}
+		if(c==temp)
+		{
+			System.out.println("The Amstrong number");
+		}
+		else
+		{
+			System.out.println("Not Amstrong Number");
+		}
+			
+	    
+	}
+}
+============================================
+package assessments;
+
+public class FactorialOfNumber {
+
+	public static void main(String[] args)
+	{
+		int n=5;
+		int fact=1;
+		for(int i=n;i>1;i--)
+		{
+			fact=fact*i;
+		}
+		System.out.println("The factorial of 5: "+ fact);
+	}
+}
+=======================================
+package assessments;
+
+public class ReverseOfString {
+
+	public static void main(String[] args)
+	{
+		String s="Education";
+		String result="";
+		for(int i=s.length()-1;i>=0;i--)
+		{
+			result=result+s.charAt(i);
+		}
+		System.out.println("The reverse of String: "+result);
+	}
+}
+========================================
+package assessments;
+
+public class Palindrome {
+
+	public static void main(String[] args)
+	{
+		int n=18765;
+		int original_number=n;
+		int rem=0;
+		int rev=0;
+		while(n!=0)
+		{
+			rem=n%10;//to get the number out
+			rev=rev*10+rem;
+			n=n/10;// to reduce the number
+		}
+		System.out.println("The original_number:"+original_number);
+		System.out.println("The reverse_number:"+rev);
+		if(rev==original_number)
+		{
+			System.out.println("It is Palindrome");
+		}
+		else
+		{
+			System.out.println("It is not Palindrome");
+		}
+	}
+}
+=============================================
+package assessments;
+
+public class PerfectNumber {
+
+	public static void main(String[] args)
+	{
+		//The sum of the perfect divisible of the given number should be equal to the given number 
+		int sum=0;
+		int n=6;
+		for(int i=1;i<n;i++)
+		{
+			if(n%i==0) // if remainder is zero
+			{
+			sum=sum+i;
+			}
+		}
+		if(sum==n)
+		{
+			System.out.println("The number is perfect");
+		}
+		else
+		{
+			System.out.println("The number is not perfect");
+		}
+	}
+}
+========================================
+package patternPrograms;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class pattern3 {
+	
+	public static void main(String[] args)
+	{
+		String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+		str=str+" ";
+		String word="";
+		String min , max;
+		String[] words=new String[250];
+		int length=0;
+		Set set=new HashSet();
+		for(int i=0; i<str.length();i++)
+		{
+			if(str.charAt(i)!=' ')
+			{
+				word=word+str.charAt(i);
+			}
+			else
+			{
+				words[length]=word;
+				length++;
+				word="";
+			}
+			
+		}
+		for(int k=0; k<length; k++)
+		{
+		System.out.print(words[k]+ " ");
+		}
+		
+		System.out.println();
+		for(int k=length-1; k>=0;k--)
+		{
+			System.out.print(words[k]+ " ");
+			
+		}
+	
+		System.out.println();
+		
+		min = max = words[0]; 
+		for(int k=0; k<length; k++)
+		{
+			if(min.length() > words[k].length())
+			{
+				min=words[k];
+			}
+		}
+		System.out.println("The smallest word in the sentence : "+ min);
+		
+		for(int k=0; k<length; k++)
+		{
+			if(max.length()<words[k].length())
+			{
+				max=words[k];
+			}
+		}
+		System.out.println("The largest word in the sentence : "+ max);
+		
+		
+		for(int k=0;k< length ; k++)
+		{
+			if(set.add(words[k]))
+			{
+				System.out.print(words[k]+ " ");
+			}
+		}
+		
+		System.out.println();
+		
+		for(int k=0;k< length ; k++)
+		{
+			if(!set.add(words[k]))
+			{
+				System.out.print(words[k]+ " ");
+			}
+		}
+		
+		
+	}
+
+}
+===================================================
+package patternPrograms;
+
+public class Pattern2 {
+
+	public static void main(String[] args) {
+	 for(int i=0; i<5; i++)
+	 {
+		 for(int j=0; j<=i ; j++)
+		 {
+			 System.out.print("*");
+		 }
+		 System.out.println();
+	 }
+	 
+	 System.out.println();
+	 System.out.println();
+	 
+	 for(int i=5; i>=1; i--)
+	 {
+		 for(int j=0; j<=i ; j++)
+		 {
+			 System.out.print("*");
+		 }
+		 System.out.println();
+	 }
+	 
+	 System.out.println();
+	 System.out.println();
+	 
+	 for(int i=0; i<5; i++)
+	 {
+		 for(int j=5; j>=i ; j--)
+		 {
+			 System.out.print("*");
+		 }
+		 System.out.println();
+	 }
+
+	}
+
+}
+===================================================================
+package patternPrograms;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class pattern1 {
+	
+	public static void main(String[] args)
+	{
+		String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+		str=str+" ";
+		String word="";
+		int length=0;
+		String max="";
+		String min="";
+		String[] words=new String[300];
+		Set set=new HashSet();
+		
+		for(int i=0; i<str.length(); i++)
+		{
+			if(str.charAt(i)!= ' ')
+			{
+				word=word+str.charAt(i);
+			}
+			else
+			{
+				words[length]=word;
+				length++;
+				word="";
+			}
+		}
+		
+		for(int k=0; k<length ; k++)
+		{
+			
+			System.out.print(words[k]+ " ");
+		}
+		
+		System.out.println();
+		
+		max= min=words[0];
+		
+		for(int k=0; k<length ; k++)
+		{
+			if(min.length()> words[k].length())
+			{
+				min=words[k];
+			}
+		}
+		System.out.println("the min string :"+min);
+		
+		for(int k=0; k<length ; k++)
+		{
+			if(max.length()< words[k].length())
+			{
+				max=words[k];
+			}
+		}
+		System.out.println("the max string :"+max);
+		
+		System.out.println("String after removing duplicates: ");
+		for(int k=0; k<length ; k++)
+		{
+			if(set.add(words[k]))
+			{
+				System.out.print(words[k]+" ");
+			}
+		}
+		System.out.println();
+		System.out.println("the reverse words: ");
+		for(int k=length-1; k>=0 ; k--)
+		{
+			System.out.print(words[k]+" ");
+		}
+		
+		
+	}
+
+}
+==============================================
+package stringprograms;
+
+/*
+ * Finding the number of words , Largest and smallest word in the given string
+ * 
+ */
+public class Program1  
+{  
+	public static void main(String[] args){   
+		String givenstring = "Hardships often prepare ordinary people for an extraordinary destiny";  
+		String word = "", small = "", large="";  
+		String[] words = new String[100];  
+		int length = 0;  
+
+		//Add extra space after string to get the last word in the given string  
+		givenstring = givenstring + " ";  
+
+		System.out.println(givenstring.length());
+		
+		for(int i = 0; i < givenstring.length(); i++){  
+			//Split the string into words  
+			if(givenstring.charAt(i) != ' '){  
+				word = word + givenstring.charAt(i);  
+			}  
+			else{  
+				//Add word to array words  
+				words[length] = word;  
+				//Increment length  
+				length++;  
+				//Make word an empty string  
+				word = "";  
+			}  
+		}  
+
+		//Initialize small and large with first word in the string  
+		small = large = words[0];  
+
+		//Determine smallest and largest word in the string  
+		for(int k = 0; k < length; k++){  
+
+			//If length of small is greater than any word present in the string  
+			//Store value of word into small  
+			if(small.length() > words[k].length())  
+				small = words[k];  
+
+			//If length of large is less than any word present in the string  
+			//Store value of word into large  
+			if(large.length() < words[k].length())  
+				large = words[k];  
+		}  
+
+		System.out.println("Smallest word: " + small);  
+		System.out.println("Largest word: " + large);  
+	
+		int j=0; // initialization
+		int flag=0;
+		int count=0;
+		while(j<givenstring.length()) //condition
+		{
+			if(givenstring.charAt(j) == ' ' || givenstring.charAt(j) == '\n' || givenstring.charAt(j) == '\t')
+			{
+				flag = 0;
+			}
+			else if(flag == 0)
+			{
+				flag = 1;
+				count ++;
+			}
+			j++ ; // increment
+		}
+		System.out.println("No of words in the above string are : "+ count);	
+			
+		}
+		
+		
+	}  
+===============================================================
+package stringprograms;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Program4 {
+
+	/*
+	 * Remove duplicates from a string
+	 * 
+	 */
+
+	public static void main(String[] args) {
+		String givenString ="malayalam";
+		char[] ch = givenString.toCharArray();
+		String res="";
+		Set set=new HashSet();
+
+		for(int i=0; i<ch.length; i++)
+		{
+
+			if(set.add(ch[i]))
+			{
+				res = res+ ch[i];
+			}
+		}
+
+		System.out.println("The String before removing duplicates :"+givenString);
+		System.out.println("The String after removing duplicates :"+res);
+
+	}
+
+}
+=====================================================
+package stringprograms;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Program5 {
+	
+	/*
+	 * Remove duplicate words from the sentence
+	 * 
+	 */
+
+	public static void main(String [] args)
+	{
+		String givenString="Hardships often prepare prepare ordinary people for an  extraordinary extraordinary destiny";
+		String word="";
+		String[] words = new String[100];
+		int length=0;
+		Set set=new HashSet();
+		String result="";
+		givenString = givenString + " ";
+
+		for(int i=0; i<givenString.length(); i++)
+		{
+			if(givenString.charAt(i)!= ' ')
+			{
+				word=word+givenString.charAt(i);
+			}
+
+			else
+			{
+				words[length] = word;
+				length++;
+				word="";
+			}
+		}
+
+		for(int k=0; k<length; k++)
+		{
+			if(!set.add(words[k]))
+			{
+				result = result + " " + words[k];
+			}
+		}
+
+System.out.println(result);
+
+	}
+
+}
+
+
+==============================================
+package stringprograms;
+
+public class Program6 {
+	
+	/*
+	 * How do you remove a given character from String?
+	 * 
+	 */
+
+	public static void main(String[] args) {
+		String givenString="Education";
+		String res="";
+		
+		for (int i=0;i<givenString.length();i++)
+		{
+			if(givenString.charAt(i)!='i')
+			{
+			res=res+ givenString.charAt(i);	
+			}
+		}
+		System.out.println("The resultant String :"+res);
+
+	}
+
+}
+=========================================
+package stringprograms;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Program7 {
+	
+	/*
+	 * 
+	 * How do you find duplicate characters in a given string?
+	 */
+
+	public static void main(String[] args) {
+		String givenString="pumpkinis";
+		char[] ch= givenString.toCharArray();
+		Set set= new HashSet();
+		int count=0;
+		for(int i=0;i<ch.length;i++)
+		{
+		if(!set.add(ch[i]))
+		{
+			System.out.println("character :"+ch[i]+" :: "+"index : "+i);
+		}
+		}
+
+	}
+
+}
+=================================================
+package stringprograms;
+
+public class Program8 {
+
+	/*
+	 * Remove digits from the string and print the string without digits
+	 * 
+	 */
+
+	public static void main(String[] args)
+	{
+		String givenString="Ed1uca5ti6on1";
+		String res="";
+		String digits="";
+		char[] ch= null;
+
+		for(int i=0; i<givenString.length(); i++)
+		{
+			if(givenString.charAt(i)>= '0' && givenString.charAt(i)<= '9')
+			{
+				digits=digits+ givenString.charAt(i);
+				ch = digits.toCharArray();
+
+			}
+			else
+			{
+				res=res+givenString.charAt(i);
+			}
+
+		}
+		System.out.println(ch);
+		System.out.println("String after removing digits : " +res);
+	}
+
+}
+===============================================
+package stringprograms;
+
+public class Program9 {
+	
+	/*
+	 * To find Number of words in a given string 
+	 * 
+	 */
+
+	public static void main(String args[]) {
+		int flag = 0;
+		int count = 0;
+		//int i = 0;
+		String str = "The sunset is beautiful";
+		/*while (i < str.length()) {
+			if (str.charAt(i) == ' ' || str.charAt(i) == '\n' || str.charAt(i) == '\t') {
+				flag = 0;
+			}else if (flag == 0) {
+				flag = 1;
+				count++;
+			}
+			i++;
+		}*/
+		for(int i=0; i<str.length(); i++)
+		{
+			if (str.charAt(i) == ' ' || str.charAt(i) == '\n' || str.charAt(i) == '\t') {
+				flag = 0;
+			}else if (flag == 0) {
+				flag = 1;
+				count++;
+			}
+		}
+		
+		System.out.println("The string is: " + str);
+		System.out.println("No of words in the above string are: " + count);
+	}
+}
+
+
+==========================================================
+package stringprograms;
+
+public class Program10 {
+	
+	/*
+	 * Number of times , given character exists in the string
+	 * 
+	 */
+	
+	public static void main(String[] args)
+	{
+		String givenString="Assistance";
+		int count=0;
+		for(int i=0; i<givenString.length(); i++)
+		{
+			if(givenString.charAt(i)== 's')
+			{
+				count++;
+			}
+		}
+		System.out.println("The number of times character exists :" + count);
+		
+	}
+
+}
+===============================================================
+package stringprograms;
+
+public class Program11 {
+	
+	public static void main(String[] args)
+	{
+		String str="Hardships often prepare prepare ordinary people for an  extraordinary extraordinary destiny";
+		str.toLowerCase();
+		int vcount=0;
+		int Ccount=0;
+		for(int i=0; i<str.length(); i++)
+		{
+			if(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u'  )
+			{
+				vcount++;
+			}
+			else if ( str.charAt(i)>= 'a' && str.charAt(i) <= 'z')
+			{
+				Ccount++;
+			}
+		}
+		System.out.println("The vowel count: "+ vcount );
+		System.out.println("The consonant count: "+ Ccount );
+		
+	}
+
+}
+===========================================================
+package stringprograms;
+
+public class Program12 {
+	
+	/*
+	 * Reverse the words in the given string
+	 * String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+	 * Output string:  destiny extraordinary extraordinary an for people ordinary prepare prepare often Hardships
+	 */
+	
+	public static void main(String[] args)
+	{
+		/*
+		 * logic one
+		 */
+	/*String str="Hardships often prepare prepare ordinary people for an  extraordinary extraordinary destiny";
+	String[] strarray=str.split(" ");
+	String revWords="";
+	System.out.println(str);
+	for(int i=strarray.length-1 ; i>=0 ; i--)
+	{
+		revWords= revWords + strarray[i]+ " ";
+	}
+	System.out.println("the words in reverse :" + revWords);*/
+		
+		/*
+		 * logic two
+		 */
+	String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+	String word="";
+	int length=0;
+	String strnew="";
+	String[] words= new String[250];
+	str= str + " ";
+	for(int i=0; i<str.length(); i++)
+	{
+		if(str.charAt(i)!= ' ')
+		{
+			word= word+ str.charAt(i);
+		}
+		else
+		{
+			words[length]= word;
+			length++;
+			word="";
+		}
+	}
+	 for (int k=length-1; k>=0; k--)
+	 {
+		 strnew = strnew + " " + words[k];
+	 }
+	 
+	 System.out.println("the output string: "+ strnew);
+	
+	
+	}
+	
+
+}
+=====================================================
+package stringprograms;
+
+public class Program13 {
+
+	/*
+	 * Reverse the words in the given string
+	 * String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+	 * The output string : ynitsed yranidroartxe yranidroartxe na rof elpoep yranidro eraperp eraperp netfo spihsdraH
+	 */
+
+	public static void main(String[] args)
+	{
+		String str="Hardships often prepare prepare ordinary people for an extraordinary extraordinary destiny";
+		String word="";
+		String[] words= new String[250];
+		str=" "+ str;
+		int length=0;
+		String res="";
+		for(int i=str.length()-1 ; i>=0 ; i--)
+		{
+			if(str.charAt(i)!= ' ')
+			{
+				word=word+str.charAt(i);
+			}
+			else
+			{
+				words[length]=word;
+				length++;
+				word="";
+			}
+		}
+		for(int k=0; k<length ; k++)
+		{
+			res=res+ " " + words[k];
+		}
+System.out.println("The output string :"+res);
+
+	}
+
+}
+==================================================
+package stringprograms;
+
+public class Program14 {
+	/*
+	 * Remove the vowels in the given string
+	 * String str="Hardships often prepare ordinary people from extraordinary destiny";
+	 * The resultant string :  Hrdshps ftn prpr rdnry ppl frm xtrrdnry xtrrdnry dstny
+	 */
+
+	public static void main(String[] args)
+	{
+
+		String str="Hardships often prepare ordinary people from extraordinary destiny";
+		str=str+ " ";
+		String word="";
+		String[] words= new String[250];
+		int length=0;
+		String res="";
+		for(int i=0; i<str.length(); i++)
+		{
+			if(str.charAt(i)!= ' ')
+			{
+				if(!(str.charAt(i) == 'a' || str.charAt(i)== 'e' || str.charAt(i)== 'i' || str.charAt(i)== 'o' || str.charAt(i)== 'u'))
+				{
+					word=word+str.charAt(i);
+
+				}
+			}
+			else
+			{
+				words[length]=word;
+				length++;
+				word="";
+			}
+		}
+
+		for(int k=0;k<length;k++)
+		{
+			res=res+" "+words[k];
+		}
+
+		System.out.println("The resultant string : "+ res);
+
+
+	}
+
+}
+=============================================
+package stringprograms;
+
+public class program2 {
+
+	public static void main(String[] args)
+	{
+		String givenString="Education";
+		String reverseString="";
+
+		for(int i=givenString.length()-1; i>=0; i-- )
+		{
+			reverseString=reverseString+ givenString.charAt(i);
+		}
+
+		System.out.println("reverse String : "+ reverseString);
+
+		if(reverseString.equals(givenString))
+		{
+			System.out.println("Palidrome");
+		}
+		else
+		{
+			System.out.println("Not Palidrome");
+		}
+	}
+
+
+
+}
+===========================================
+package stringprograms;
+
+public class program3 {
+	
+	/*
+	 * Number of times , a particular character exists in the string
+	 * 
+	 */
+
+	public static void main(String[] args) {
+		String givenString="Constitution";
+		int count=0;
+		for(int i=0; i<givenString.length(); i++)
+		{
+			char find=givenString.charAt(i);
+			if(find=='i')
+			{
+				count++;
+			}
+		}
+		System.out.println("The number of times 'i' in the given string :"+count);
+		
+		StringBuilder str=new StringBuilder(givenString);
+		System.out.println(str.reverse());
+		System.out.println(givenString.toLowerCase());
+		System.out.println(givenString.toUpperCase());
+		System.out.println(givenString.concat(givenString));
+		
+		
+		
+
+	}
+
+}

@@ -1,0 +1,118 @@
+MIP- Bangladesh ROBI:
+=======================
+
+CIT URL:
+--------
+
+Dashboard:
+http://cit-ap-app-01.sg.bimamobile.internal:8080/MIPBD/pages/login.jsp
+DASHBOARD
+Robi123!
+
+USSD:
+http://cit-ap-app-01.sg.bimamobile.internal:8080/USSDBD/customerfactory?userid=bima&password=bima&input=21216&msisdn=8808715210231&newRequest=1
+
+UAT URL:
+----------
+Application Setup for UAT:
+----------------------------
+Dahsboard in UAT
+MIP Services in UAT
+SDPListenerTest in BD esb
+USPTEST in BD app
+
+9787925954
+
+
+https://bdmip-uat.bimamobile.com/MIPBD/pages/login.jsp
+DASHBOARD
+Robi123!
+
+
+USSD:
+https://bdmip.bimamobile.com/USPTEST/customerfactory?userid=bima&password=bima&input=21216&msisdn=8801865895003&newRequest=1
+https://bdmip.bimamobile.com/USPTEST/customerfactory?userid=bima&password=bima&input=21216*1&msisdn=8801865895003&newRequest=1
+https://bdmip.bimamobile.com/USPTEST/customerfactory?userid=bima&password=bima&input=21216*2&msisdn=8801865895003&newRequest=1
+
+
+LIVE URL:
+-----------
+
+Dashboard:
+https://bdmip.bimamobile.com/MIP/pages/login.jsp
+DASHBOARD
+Robi123!
+
+USSD
+https://bdmip.bimamobile.com/USP/customerfactory?userid=bima&password=bima&input=21216&msisdn=8801865895003&newRequest=1
+https://bdmip.bimamobile.com/USP/customerfactory?userid=bima&password=bima&input=21216*1&msisdn=8801865895003&newRequest=1
+https://bdmip.bimamobile.com/USP/customerfactory?userid=bima&password=bima&input=21216*2&msisdn=8801865895003&newRequest=1
+
+
+SDP:
+In CIT
+/opt/apache-tomcat-6.0.32/webapps
+SDPListener.war
+
+To run SDP for activation/deactivation
+--------------------------------------
+/home/bimaapp/BD_SDP/
+-rw-rw-r-- 1 bimaapp           bimaapp           1117 May 21  2020 SDPupdatetype2request.xml
+-rw-rw-r-- 1 bimaapp           bimaapp           3297 May 21  2020 SDPupdatetype3request.xml
+-rw-rw-r-- 1 bimaapp           bimaapp           1122 Mar  1 11:28 SDPupdatetype1request.xml
+
+
+updateType: 1 for successful deductions with rentsuccess: true
+updateType: 3 into graceperiod : rentSuccess: false and outofgraceperiod: resntSuccess: True
+updateType: 2 for deactivation with rentsuccess: true
+
+COMMAND:
+curl -H "Content-Type: text/xml; charset=utf-8" -H "SOAPAction;" -d @/home/bimaapp/BD_SDP/SDPupdatetype1request.xml -X POST http://localhost:8081/SDPListener/services/DataSync
+
+*TEST*
+PRODUCT_ID : 456654
+FAMILY_PACK_PRODUCT_ID : 987789
+ 
+*LIVE*
+PRODUCT_ID : 0300405164
+FAMILY_PACK_PRODUCT_ID : 0300409684
+
+*LIVE*
+sp.userName=200066
+sp.password=Robi1234
+sp.serviceId=2000662000003254
+
+For Attachment and detachment:
+subscribe.product.webservice.endpoint=http://10.16.100.194:8310/SubscribeManageService/services/SubscribeManage
+
+admin config queries:
+-----------------------
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/mip-services-bd/RegisterCustomer' where id=6;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/mip-services-bd/SDPSubscription' where id=15;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/subscribe-coaching-programme' where id=19;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/unsubscribe-coaching-programme' where id=20;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/update-coaching-subscription' where id=21;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/get-coaching-id' where id=22;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/cpsmsTemplateUpload/' where id=23;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/update-eligiblity-status' where id=24;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/coaching-service-bd-1.0/send-first-sms' where id=25;
+ update admin_config set value='http://cit-ap-app-01.sg.bimamobile.internal:8080/SMSService/listener' where id=26;
+ 
+
+Mock Setup:
+Endpoint: 
+http://ap-qa-01.sg.bimamobile.internal:8081/mockSubscribeManageBinding
+
+ap-qa-01.sg.bimamobile.internal
+sudo su - bimaapp
+cd /home/karthick.jaipal/Soap_project/Soap_BD/
+
+cd /opt/SoapUI/bin
+command: 
+./mockservicerunner.sh /home/karthick.jaipal/Soap_project/Soap_BD/sag-subscribe-service-1-0-soapui-project_bdSoapnew_8081.xml
+
+
+
+
+
+

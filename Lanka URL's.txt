@@ -1,0 +1,52 @@
+MIP- Srilanka Dialog:
+=======================
+
+CIT URL:
+--------
+
+Dashboard:
+http://cit-ap-app-01.sg.bimamobile.internal:8080/MIPLK/pages/login.jsp
+DA455
+Dialog123!
+
+USSD:
+http://cit-ap-app-01.sg.bimamobile.internal:8080/USPLK/customerfactory?SESSIONID=111&MSISDN=766817055&USSDAD=107&USSDPARAS=1
+
+UAT URL:
+----------
+http://cit-ap-app-01.sg.bimamobile.internal:8080/USPLK/customerfactory?SESSIONID=111&MSISDN=766817034&USSDAD=107&USSDPARAS=1
+Dashboard:
+http://uat-ap-app-01.sg.bimamobile.internal:8080/MIPLK/pages/login.jsp
+https://lkmip.bimamobile.com/MIPLKUAT/pages/login.jsp
+https://10.127.210.53:8080/MIPLKUAT/pages/login.jsp
+
+USSD:
+https://lkmip.bimamobile.com/USPTEST/customerfactory?SESSIONID=111&MSISDN=766817055&USSDAD=107&USSDPARAS=1
+
+LIVE URL:
+-----------
+
+Dashboard:
+https://lkmip.bimamobile.com/MIP/pages/login.jsp
+DA455
+Dialog123!
+
+USSD
+https://lkmip.bimamobile.com/USP/customerfactory?SESSIONID=111&MSISDN=766817055&USSDAD=107&USSDPARAS=1
+
+
+
+War file path:
+/var/lib/tomcat7/webapps
+
+Application log path:
+/var/log/mip/lk/da/
+
+Scheduler log path:
+/var/log/mip/lk/da/cronjobs
+
+Scheduler path:
+/opt/apps/
+
+properties file path for both application and Scheduler:
+/etc/bima/properties/mip/lk/da/
